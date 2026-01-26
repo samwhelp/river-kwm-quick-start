@@ -25,3 +25,13 @@ REF_SUIT_DIR_PATH="$(realpath "${REF_PLAN_DIR_PATH}/..")"
 ##
 
 . "${REF_INIT_DIR_PATH}/path.sh"
+
+
+
+
+##
+## ## Master
+##
+
+. "${REF_INIT_DIR_PATH}/master-prepare.sh"
+. "${REF_INIT_DIR_PATH}/master-main.sh"
