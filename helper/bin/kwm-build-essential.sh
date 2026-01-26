@@ -44,38 +44,32 @@ REF_INIT_DIR_PATH="${REF_BASE_DIR_PATH}/../ext"
 
 
 ################################################################################
-### Head: Portal / portal_help
+### Head: Model / mod_kwm_build_essential
 ##
 
-portal_help () {
+mod_kwm_build_essential () {
 
-cat << __EOF__
-
-Usage:
-
-	$ make [action]
-
-Example:
-
-	$ make
-	$ make help
-
-
-	$ make river-build-essential
-
-
-	$ make kwm-build-essential
-
-
-Debug:
-	$ export IS_DEBUG=true
-
-__EOF__
+	echo mod_kwm_build_essential
 
 }
 
 ##
-### Tail: Portal / portal_help
+### Tail: Model / mod_kwm_build_essential
+################################################################################
+
+
+################################################################################
+### Head: Portal / portal_kwm_build_essential
+##
+
+portal_kwm_build_essential () {
+
+	mod_kwm_build_essential
+
+}
+
+##
+### Tail: Portal / portal_kwm_build_essential
 ################################################################################
 
 
@@ -85,7 +79,7 @@ __EOF__
 
 __main__ () {
 
-	portal_help "${@}"
+	portal_kwm_build_essential "${@}"
 
 }
 
