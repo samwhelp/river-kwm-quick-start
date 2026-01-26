@@ -49,7 +49,12 @@ REF_INIT_DIR_PATH="${REF_BASE_DIR_PATH}/../ext"
 
 mod_river_build_essential () {
 
-	echo mod_river_build_essential
+	#echo mod_river_build_essential
+
+	echo
+	echo sudo pacman -Sy --needed zig wayland wayland-protocols libxkbcommon libevdev pixman pkg-config scdoc
+	echo
+	sudo pacman -Sy --needed zig wayland wayland-protocols libxkbcommon libevdev pixman pkg-config scdoc
 
 }
 
