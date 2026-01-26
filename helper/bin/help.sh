@@ -69,6 +69,9 @@ Example:
 	$ make kwm-build-essential
 
 
+	$ make tool-install
+
+
 	$ make clean
 
 
