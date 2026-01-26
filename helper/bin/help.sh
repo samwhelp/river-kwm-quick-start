@@ -61,7 +61,7 @@ Example:
 	$ make help
 
 
-	$ make river-source-downloa
+	$ make river-source-download
 	$ make river-build-essential
 
 
