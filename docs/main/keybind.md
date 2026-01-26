@@ -34,3 +34,11 @@
 
 
 ## Window
+
+| Keybind      | Action                              |
+| ------------ | ----------------------------------- |
+| `Super + q`  | Window Close                        |
+| `Super + a`  | Focus Prev Window                   |
+| `Super + s`  | Focus Next Window                   |
+| `Super + f`  | Window Toggle Fullscreen            |
+| `Super + m`  | Window Toggle Fullscreen in window  |
