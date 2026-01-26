@@ -69,6 +69,8 @@ Example:
 
 	$ make kwm-source-download
 	$ make kwm-build-essential
+	$ make kwm-build-and-install-default
+	$ make kwm-build-and-install-main
 
 
 	$ make tool-install

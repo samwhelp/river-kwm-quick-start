@@ -44,33 +44,34 @@ REF_INIT_DIR_PATH="$(realpath "${REF_BASE_DIR_PATH}/../ext")"
 
 
 ################################################################################
-### Head: Model / mod_river_build_and_install
+### Head: Model / mod_kwm_build_and_install
 ##
 
-mod_river_build_and_install () {
+mod_kwm_build_and_install () {
 
 	mod_master_prepare
 
-	sys_river_build_and_install
-
-	sys_river_extra_install
+	sys_kwm_build_and_install
 
 }
 
-sys_river_build_and_install () {
+sys_kwm_build_and_install () {
 
 	echo
-	echo mkdir -p "${REF_MASTER_RIVER_DIR_PATH}"
+	echo mkdir -p "${REF_MASTER_KWM_DIR_PATH}"
 	echo
-	mkdir -p "${REF_MASTER_RIVER_DIR_PATH}"
+	mkdir -p "${REF_MASTER_KWM_DIR_PATH}"
+
+
+	sys_kwm_config_install
 
 
 
 
 	echo
-	echo cd "${REF_MASTER_RIVER_DIR_PATH}"
+	echo cd "${REF_MASTER_KWM_DIR_PATH}"
 	echo
-	cd "${REF_MASTER_RIVER_DIR_PATH}"
+	cd "${REF_MASTER_KWM_DIR_PATH}"
 
 
 
@@ -90,33 +91,33 @@ sys_river_build_and_install () {
 
 }
 
-sys_river_extra_install () {
+sys_kwm_config_install () {
 
 	echo
-	echo sudo install -Dm644 "${REF_MASTER_RIVER_DIR_PATH}/contrib/river.desktop" "/usr/share/wayland-sessions/river.desktop"
+	echo install -Dm644 "${REF_MASTER_KWM_DIR_PATH}/config.def.zig" "${REF_MASTER_KWM_DIR_PATH}/config.zig"
 	echo
-	sudo install -Dm644 "${REF_MASTER_RIVER_DIR_PATH}/contrib/river.desktop" "/usr/share/wayland-sessions/river.desktop"
+	install -Dm644 "${REF_MASTER_KWM_DIR_PATH}/config.def.zig" "${REF_MASTER_KWM_DIR_PATH}/config.zig"
 
 }
 
 
 ##
-### Tail: Model / mod_river_build_and_install
+### Tail: Model / mod_kwm_build_and_install
 ################################################################################
 
 
 ################################################################################
-### Head: Portal / portal_river_build_and_install
+### Head: Portal / portal_kwm_build_and_install
 ##
 
-portal_river_build_and_install () {
+portal_kwm_build_and_install () {
 
-	mod_river_build_and_install
+	mod_kwm_build_and_install
 
 }
 
 ##
-### Tail: Portal / portal_river_build_and_install
+### Tail: Portal / portal_kwm_build_and_install
 ################################################################################
 
 
@@ -126,7 +127,7 @@ portal_river_build_and_install () {
 
 __main__ () {
 
-	portal_river_build_and_install "${@}"
+	portal_kwm_build_and_install "${@}"
 
 }
 
