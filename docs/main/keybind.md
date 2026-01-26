@@ -7,10 +7,10 @@
 
 ## Mode
 
-| To Mode and Back Default | Keybind              |
-| ------------------------ | -------------------- |
-| `passthrough`            | `Super + Shift + i`  |
-| `floating`               | `Super + Shift + u`  |
+| Keybind              | To Mode and Back Default |
+| -------------------- | ------------------------ |
+| `Super + Shift + i`  | `passthrough`            |
+| `Super + Shift + u`  | `floating`               |
 
 
 
@@ -18,12 +18,19 @@
 ## Default Mode
 
 
+
+
 ## Layout
 
-| Layout      | Keybind            |
-| ----------- | ------------------ |
-| `float`     | `Super + Alt + f`  |
-| `tile`      | `Super + Alt + t`  |
-| `grid`      | `Super + Alt + g`  |
-| `monocle`   | `Super + Alt + m`  |
-| `scroller`  | `Super + Alt + s`  |
+| Keybind            | Layout      |
+| ------------------ | ----------- |
+| `Super + Alt + f`  | `float`     |
+| `Super + Alt + t`  | `tile`      |
+| `Super + Alt + g`  | `grid`      |
+| `Super + Alt + m`  | `monocle`   |
+| `Super + Alt + s`  | `scroller`  |
+
+
+
+
+## Window
