@@ -1,0 +1,745 @@
+////////////////////////////////////////////////////////
+// Configure irrelevant part
+////////////////////////////////////////////////////////
+const std = @import("std");
+const fmt = std.fmt;
+
+const xkb = @import("xkbcommon");
+const Keysym = xkb.Keysym;
+const wayland = @import("wayland");
+const river = wayland.client.river;
+
+const kwm = @import("kwm");
+const Rule = @import("rule");
+
+const Alt: u32 = @intFromEnum(river.SeatV1.Modifiers.Enum.mod1);
+const Super: u32 = @intFromEnum(river.SeatV1.Modifiers.Enum.mod4);
+const Ctrl: u32 = @intFromEnum(river.SeatV1.Modifiers.Enum.ctrl);
+const Shift: u32 = @intFromEnum(river.SeatV1.Modifiers.Enum.shift);
+const Button = kwm.Button;
+const XcursorTheme = struct {
+    name: []const u8,
+    size: u32,
+};
+const BarColor = struct {
+    fg: u32,
+    bg: u32,
+};
+const BarConfig = struct {
+    show_default: bool,
+    position: enum {
+        top,
+        bottom,
+    },
+    font: []const u8,
+    color: struct {
+        normal: BarColor,
+        select: BarColor,
+    },
+    status: union(enum) {
+        text: []const u8,
+        stdin,
+        fifo: []const u8,
+    },
+    click: std.EnumMap(enum { tag, layout, mode, title, status }, std.EnumMap(Button, kwm.binding.Action)),
+};
+const XkbBinding = struct {
+    mode: Mode = .default,
+    keysym: u32,
+    modifiers: u32,
+    event: river.XkbBindingV1.Event = .pressed,
+    action: kwm.binding.Action,
+};
+const PointerBinding = struct {
+    mode: Mode = .default,
+    button: Button,
+    modifiers: u32,
+    action: kwm.binding.Action,
+    event: river.PointerBindingV1.Event = .pressed,
+};
+const BorderColor = struct {
+    focus: u32,
+    unfocus: u32,
+    urgent: u32,
+};
+pub fn InputConfig(comptime T: type) type {
+    return union(enum(u2)) {
+        value: ?T,
+        func: *const fn(?[]const u8) ?T,
+    };
+}
+
+
+////////////////////////////////////////////////////////
+// Configure part
+////////////////////////////////////////////////////////
+
+const cmd_terminal = "xfce4-terminal";
+const cmd_file_manager = "thunar";
+const cmd_text_editor = "mousepad";
+const cmd_web_browser = "firefox --new-tab about:blank";
+const cmd_launcher_drun = "rofi -show drun";
+const cmd_launcher_run = "rofi -show run";
+const cmd_launcher_window = "rofi -show window";
+const cmd_system_logout = "pkill river";
+
+pub const env = [_] struct { []const u8, []const u8 } {
+    // .{ "key", "value" },
+};
+
+pub const working_directory: union(enum) {
+    none,
+    home,
+    custom: []const u8,
+} = .home;
+
+pub const startup_cmds = [_][]const []const u8 {
+    // &[_][]const u8 { "swaybg", "-i", "/path/to/wallpaper" },
+    &[_][]const u8 {"sh", "-c", "swaybg -i /usr/share/backgrounds/default.jpg -m fill" },
+};
+
+pub const xcursor_theme: ?XcursorTheme = null;
+
+
+fn touchpad_config(name: ?[]const u8) ?river.LibinputDeviceV1.NaturalScrollState {
+    const pattern: Rule.Pattern = .compile(".*[tT]ouchpad");
+    return if (pattern.is_match(name orelse return null)) .enabled else null;
+}
+
+///////////////////////
+// input config
+//////////////////////
+// if set .value:
+//      if null will do nothing
+//      else will apply it
+// if set .func:
+//      will dynamicly call the function, and get it's return value
+//      then same as .value
+pub const repeat_info: InputConfig(kwm.KeyboardRepeatInfo)                                  = .{ .value = .{ .rate = 50, .delay = 300 } };
+pub const scroll_factor: InputConfig(f64)                                                   = .{ .value = null };
+pub const send_events_modes: InputConfig(river.LibinputDeviceV1.SendEventsModes.Enum)       = .{ .value = .enabled };
+pub const tap: InputConfig(river.LibinputDeviceV1.TapState)                                 = .{ .value = .enabled };
+pub const drag: InputConfig(river.LibinputDeviceV1.DragState)                               = .{ .value = .enabled };
+pub const drag_lock: InputConfig(river.LibinputDeviceV1.DragLockState)                      = .{ .value = .disabled };
+pub const tap_button_map: InputConfig(river.LibinputDeviceV1.TapButtonMap)                  = .{ .value = .lrm };
+pub const three_finger_drag: InputConfig(river.LibinputDeviceV1.ThreeFingerDragState)       = .{ .value = .disabled };
+pub const calibration_matrix: InputConfig([6]f32)                                           = .{ .value = null };
+pub const accel_profile: InputConfig(river.LibinputDeviceV1.AccelProfile)                   = .{ .value = null };
+pub const accel_speed: InputConfig(f64)                                                     = .{ .value = null };
+pub const natural_scroll: InputConfig(river.LibinputDeviceV1.NaturalScrollState)            = .{ .func = touchpad_config };
+pub const left_handed: InputConfig(river.LibinputDeviceV1.LeftHandedState)                  = .{ .value = .disabled };
+pub const click_method: InputConfig(river.LibinputDeviceV1.ClickMethod)                     = .{ .value = .button_areas };
+pub const clickfinger_button_map: InputConfig(river.LibinputDeviceV1.ClickfingerButtonMap)  = .{ .value = .lrm };
+pub const middle_button_emulation: InputConfig(river.LibinputDeviceV1.MiddleEmulationState) = .{ .value = .disabled };
+pub const scroll_method: InputConfig(river.LibinputDeviceV1.ScrollMethod)                   = .{ .value = .two_finger };
+pub const scroll_button: InputConfig(Button)                                                = .{ .value = .middle };
+pub const scroll_button_lock: InputConfig(river.LibinputDeviceV1.ScrollButtonLockState)     = .{ .value = .disabled };
+pub const disable_while_typing: InputConfig(river.LibinputDeviceV1.DwtState)                = .{ .value = .enabled };
+pub const disable_while_trackpointing: InputConfig(river.LibinputDeviceV1.DwtpState)        = .{ .value = .enabled };
+pub const rotation_angle: InputConfig(u32)                                                  = .{ .value = null };
+pub const numlock: InputConfig(kwm.KeyboardNumlockState)                                    = .{ .value = null };
+pub const capslock: InputConfig(kwm.KeyboardCapslockState)                                  = .{ .value = null };
+pub const keyboard_layout: InputConfig(kwm.KeyboardLayout)                                  = .{ .value = null };
+pub const keymap: InputConfig(kwm.Keymap)                                                   = .{ .value = null };
+
+pub const sloppy_focus = false;
+
+pub const bar: BarConfig = .{
+    .show_default = true,
+    .position = .top,
+    .font = "monospace:size=10",
+    .color = .{
+        .normal = .{
+            .fg = 0x828bb8ff,
+            .bg = 0x1b1d2bd0,
+        },
+        .select = .{
+            .fg = 0x444a73ff,
+            .bg = 0xc8d3f5d0,
+        },
+    },
+    .status = .{ .text = "kwm" }, // .stdin or .{ .fifo = "fifo file path" }
+    // bar clicked callback
+    // each part support left/right/middle
+    .click = .init(.{
+        .tag = .init(.{
+            // could use undefined there because it will be replace with the tag clicked
+            .left = .{ .set_output_tag = undefined },
+            .right = .{ .toggle_output_tag = undefined },
+            .middle = .{ .toggle_window_tag = undefined },
+        }),
+        .layout = .init(.{
+            .left = .switch_to_previous_layout,
+        }),
+        .mode = .init(.{
+            .left = .{ .switch_mode = .{ .mode = .default } },
+        }),
+        .title = .init(.{
+            .left = .zoom,
+        }),
+        .status = .init(.{
+            .middle = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal } } }
+        })
+    }),
+};
+
+pub var auto_swallow = true;
+
+pub const default_window_decoration: kwm.WindowDecoration = .ssd;
+
+pub var border_width: i32 = 5;
+pub const border_color: BorderColor = .{
+    .focus = 0xffc777ff,
+    .unfocus = 0x828bb8ff,
+    .urgent = 0xff0000ff,
+};
+
+
+pub const default_layout: kwm.layout.Type = .tile;
+pub var tile: kwm.layout.tile = .{
+    .nmaster = 1,
+    .mfact = 0.55,
+    .inner_gap = 12,
+    .outer_gap = 9,
+    .master_location = .left,
+};
+pub var grid: kwm.layout.grid = .{
+    .outer_gap = 9,
+    .inner_gap = 12,
+    .direction = .horizontal,
+};
+pub var monocle: kwm.layout.monocle = .{
+    .gap = 9,
+};
+pub var scroller: kwm.layout.scroller = .{
+    .mfact = 0.5,
+    .inner_gap = 16,
+    .outer_gap = 9,
+    .snap_to_left = false,
+};
+pub fn layout_tag(layout: kwm.layout.Type) []const u8 {
+    return switch (layout) {
+        .tile => switch (tile.master_location) {
+            .left => "[]=",
+            .right => "=[]",
+            .top => "[^]",
+            .bottom => "[_]",
+        },
+        .grid => switch (grid.direction) {
+            .horizontal => "|+|",
+            .vertical => "|||",
+        },
+        .monocle => "[=]",
+        .scroller => if (scroller.snap_to_left) "[<-]" else "[==]",
+        .float => "><>",
+    };
+}
+
+
+fn modify_nmaster(state: *const kwm.State, arg: *const kwm.binding.Arg) void {
+    std.debug.assert(arg.* == .i);
+
+    if (state.layout == .tile) {
+        tile.nmaster = @max(1, tile.nmaster+arg.i);
+    }
+}
+
+
+fn modify_mfact(state: *const kwm.State, arg: *const kwm.binding.Arg) void {
+    std.debug.assert(arg.* == .f);
+
+    if (state.layout) |layout_t| {
+        switch (layout_t) {
+            .tile => tile.mfact = @min(1, @max(0, tile.mfact+arg.f)),
+            .scroller => scroller.mfact = @min(1, @max(0, scroller.mfact+arg.f)),
+            else => {},
+        }
+    }
+}
+
+
+fn modify_gap(state: *const kwm.State, arg: *const kwm.binding.Arg) void {
+    std.debug.assert(arg.* == .i);
+
+    if (state.layout) |layout_t| {
+        switch (layout_t) {
+            .tile => tile.inner_gap = @max(border_width*2, tile.inner_gap+arg.i),
+            .grid => grid.inner_gap = @max(border_width*2, grid.inner_gap+arg.i),
+            .monocle => monocle.gap = @max(border_width*2, monocle.gap+arg.i),
+            .scroller => scroller.inner_gap = @max(border_width*2, scroller.inner_gap+arg.i),
+            .float => {},
+        }
+    }
+}
+
+
+fn modify_master_location(state: *const kwm.State, arg: *const kwm.binding.Arg) void {
+    std.debug.assert(arg.* == .ui);
+
+    if (state.layout == .tile) {
+        tile.master_location = switch (arg.ui) {
+            'l' => .left,
+            'r' => .right,
+            'u' => .top,
+            'd' => .bottom,
+            else => return,
+        };
+    }
+}
+
+
+fn toggle_grid_direction(state: *const kwm.State, _: *const kwm.binding.Arg) void {
+    if (state.layout == .grid) {
+        grid.direction = switch (grid.direction) {
+            .horizontal => .vertical,
+            .vertical => .horizontal,
+        };
+    }
+}
+
+
+fn toggle_scroller_snap_to_left(state: *const kwm.State, arg: *const kwm.binding.Arg) void {
+    std.debug.assert(arg.* == .none);
+
+    if (state.layout == .scroller) {
+        scroller.snap_to_left = !scroller.snap_to_left;
+    }
+}
+
+
+fn toggle_auto_swallow(_: *const kwm.State, _: *const kwm.binding.Arg) void {
+    auto_swallow = !auto_swallow;
+}
+
+
+pub const Mode = enum {
+    lock, // do not delete, compile needed
+    default,
+    floating,
+    passthrough,
+};
+// if not set, will use @tagName(mode) as replacement
+// if set to empty string, will hide
+pub const mode_tag: std.EnumMap(Mode, []const u8) = .init(.{
+    .lock = "",
+    .default = "",
+    .floating = "F",
+    .passthrough = "P",
+});
+
+pub const tags = [_][]const u8 {
+    "1", "2", "3", "4", "5", "6", "7", "8", "9"
+};
+
+pub const xkb_bindings = blk: {
+    const bindings = [_]XkbBinding {
+        // mode: passthrough
+        .{
+            .keysym = Keysym.i,
+            .modifiers = Super|Shift,
+            .action = .{ .switch_mode = .{ .mode = .passthrough } }
+        },
+        .{
+            .mode = .passthrough,
+            .keysym = Keysym.i,
+            .modifiers = Super|Shift,
+            .action = .{ .switch_mode = .{ .mode = .default } }
+        },
+
+
+        // mode: floating
+        .{
+            .keysym = Keysym.u,
+            .modifiers = Super|Shift,
+            .action = .{ .switch_mode = .{ .mode = .floating } },
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.u,
+            .modifiers = Super|Shift,
+            .action = .{ .switch_mode = .{ .mode = .default } },
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.l,
+            .modifiers = Super,
+            .action = .{ .move = .{ .step = .{ .horizontal = 10 } } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.h,
+            .modifiers = Super,
+            .action = .{ .move = .{ .step = .{ .horizontal = -10 } } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.j,
+            .modifiers = Super,
+            .action = .{ .move = .{ .step = .{ .vertical = 10 } } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.k,
+            .modifiers = Super,
+            .action = .{ .move = .{ .step = .{ .vertical = -10 } } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.l,
+            .modifiers = Super|Ctrl,
+            .action = .{ .resize = .{ .step = .{ .horizontal = 10 } } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.h,
+            .modifiers = Super|Ctrl,
+            .action = .{ .resize = .{ .step = .{ .horizontal = -10 } } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.j,
+            .modifiers = Super|Ctrl,
+            .action = .{ .resize = .{ .step = .{ .vertical = 10 } } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.k,
+            .modifiers = Super|Ctrl,
+            .action = .{ .resize = .{ .step = .{ .vertical = -10 } } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.l,
+            .modifiers = Super|Shift,
+            .action = .{ .snap = .{ .edge = .right } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.h,
+            .modifiers = Super|Shift,
+            .action = .{ .snap = .{ .edge = .left } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.j,
+            .modifiers = Super|Shift,
+            .action = .{ .snap = .{ .edge = .bottom } }
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.k,
+            .modifiers = Super|Shift,
+            .action = .{ .snap = .{ .edge = .top } }
+        },
+
+
+        // mode: default
+        .{
+            .keysym = Keysym.c,
+            .modifiers = Super|Shift,
+            .action = .quit,
+        },
+        .{
+            .keysym = Keysym.q,
+            .modifiers = Super,
+            .action = .close,
+        },
+        .{
+            .keysym = Keysym.Return,
+            .modifiers = Super,
+            .action = .zoom,
+        },
+        .{
+            .keysym = Keysym.b,
+            .modifiers = Super,
+            .action = .toggle_bar,
+        },
+        .{
+            .keysym = Keysym.l,
+            .modifiers = Super,
+            .action = .{ .custom_fn = .{ .func = &modify_mfact, .arg = .{ .f = 0.01 } } },
+        },
+        .{
+            .keysym = Keysym.h,
+            .modifiers = Super,
+            .action = .{ .custom_fn = .{ .func = &modify_mfact, .arg = .{ .f = -0.01 } } },
+        },
+        .{
+            .keysym = Keysym.j,
+            .modifiers = Super|Alt,
+            .action = .{ .custom_fn = .{ .func = &modify_master_location, .arg = .{ .ui = 'd' } } },
+        },
+        .{
+            .keysym = Keysym.k,
+            .modifiers = Super|Alt,
+            .action = .{ .custom_fn = .{ .func = &modify_master_location, .arg = .{ .ui = 'u' } } },
+        },
+        .{
+            .keysym = Keysym.l,
+            .modifiers = Super|Alt,
+            .action = .{ .custom_fn = .{ .func = &modify_master_location, .arg = .{ .ui = 'r' } } },
+        },
+        .{
+            .keysym = Keysym.h,
+            .modifiers = Super|Alt,
+            .action = .{ .custom_fn = .{ .func = &modify_master_location, .arg = .{ .ui = 'l' } } },
+        },
+        .{
+            .keysym = Keysym.equal,
+            .modifiers = Super,
+            .action = .{ .custom_fn = .{ .func = &modify_nmaster, .arg = .{ .i = 1 } } },
+        },
+        .{
+            .keysym = Keysym.minus,
+            .modifiers = Super,
+            .action = .{ .custom_fn = .{ .func = &modify_nmaster, .arg = .{ .i = -1 } } },
+        },
+        .{
+            .keysym = Keysym.equal,
+            .modifiers = Super|Alt,
+            .action = .{ .custom_fn = .{ .func = &modify_gap, .arg = .{ .i = 1 } } },
+        },
+        .{
+            .keysym = Keysym.minus,
+            .modifiers = Super|Alt,
+            .action = .{ .custom_fn = .{ .func = &modify_gap, .arg = .{ .i = -1 } } },
+        },
+        .{
+            .keysym = Keysym.s,
+            .modifiers = Super,
+            .action = .{ .focus_iter = .{ .direction = .forward } },
+        },
+        .{
+            .keysym = Keysym.a,
+            .modifiers = Super,
+            .action = .{ .focus_iter = .{ .direction = .reverse } },
+        },
+        .{
+            .keysym = Keysym.j,
+            .modifiers = Super|Ctrl,
+            .action = .{ .focus_iter = .{ .direction = .forward, .skip_floating = true, } },
+        },
+        .{
+            .keysym = Keysym.k,
+            .modifiers = Super|Ctrl,
+            .action = .{ .focus_iter = .{ .direction = .reverse, .skip_floating = true } },
+        },
+        .{
+            .keysym = Keysym.Tab,
+            .modifiers = Super,
+            .action = .{ .swap = .{ .direction = .forward } },
+        },
+        .{
+            .keysym = Keysym.grave,
+            .modifiers = Super,
+            .action = .{ .swap = .{ .direction = .reverse } },
+        },
+        .{
+            .keysym = Keysym.period,
+            .modifiers = Super,
+            .action = .{ .focus_output_iter = .{ .direction = .forward } },
+        },
+        .{
+            .keysym = Keysym.comma,
+            .modifiers = Super,
+            .action = .{ .focus_output_iter = .{ .direction = .reverse } },
+        },
+        .{
+            .keysym = Keysym.period,
+            .modifiers = Super|Shift,
+            .action = .{ .send_to_output = .{ .direction = .forward } },
+        },
+        .{
+            .keysym = Keysym.comma,
+            .modifiers = Super|Shift,
+            .action = .{ .send_to_output = .{ .direction = .reverse } },
+        },
+        .{
+            .keysym = Keysym.m,
+            .modifiers = Super,
+            .action = .{ .toggle_fullscreen = .{ .in_window = true } },
+        },
+        .{
+            .keysym = Keysym.f,
+            .modifiers = Super,
+            .action = .{ .toggle_fullscreen = .{} },
+        },
+        .{
+            .keysym = Keysym.Escape,
+            .modifiers = Super,
+            .action = .toggle_floating,
+        },
+        .{
+            .keysym = Keysym.a,
+            .modifiers = Super|Ctrl,
+            .action = .toggle_swallow,
+        },
+        .{
+            .keysym = Keysym.a,
+            .modifiers = Super|Shift,
+            .action = .{ .custom_fn = .{ .func = &toggle_auto_swallow, .arg = .none } }
+        },
+        .{
+            .keysym = Keysym.g,
+            .modifiers = Super|Shift,
+            .action = .{ .custom_fn = .{ .func = &toggle_grid_direction, .arg = .none } },
+        },
+        .{
+            .keysym = Keysym.h,
+            .modifiers = Super|Shift,
+            .action = .{ .custom_fn = .{ .func = &toggle_scroller_snap_to_left, .arg = .none } },
+        },
+        .{
+            .keysym = Keysym.f,
+            .modifiers = Super|Alt,
+            .action = .{ .switch_layout = .{ .layout = .float } },
+        },
+        .{
+            .keysym = Keysym.t,
+            .modifiers = Super|Alt,
+            .action = .{ .switch_layout = .{ .layout = .tile } },
+        },
+        .{
+            .keysym = Keysym.g,
+            .modifiers = Super|Alt,
+            .action = .{ .switch_layout = .{ .layout = .grid } },
+        },
+        .{
+            .keysym = Keysym.m,
+            .modifiers = Super|Alt,
+            .action = .{ .switch_layout = .{ .layout = .monocle } },
+        },
+        .{
+            .keysym = Keysym.s,
+            .modifiers = Super|Alt,
+            .action = .{ .switch_layout = .{ .layout = .scroller } },
+        },
+        .{
+            .keysym = Keysym.Tab,
+            .modifiers = Super|Shift,
+            .action = .switch_to_previous_tag,
+        },
+        .{
+            .keysym = Keysym.apostrophe,
+            .modifiers = Super,
+            .action = .{ .shift_tag = .{ .direction = .forward } },
+        },
+        .{
+            .keysym = Keysym.semicolon,
+            .modifiers = Super,
+            .action = .{ .shift_tag = .{ .direction = .reverse } },
+        },
+        .{
+            .keysym = Keysym.@"0",
+            .modifiers = Super,
+            .action = .{ .set_output_tag = .{ .tag = 0xffffffff } }
+        },
+        .{
+            .keysym = Keysym.p,
+            .modifiers = Super,
+            .action = .{ .spawn_shell = .{ .cmd = "wmenu-run" } },
+        },
+        .{
+            .keysym = Keysym.a,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal } } },
+        },
+        .{
+            .keysym = Keysym.f,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_file_manager } } },
+        },
+        .{
+            .keysym = Keysym.e,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_text_editor } } },
+        },
+        .{
+            .keysym = Keysym.b,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_web_browser } } },
+        },
+        .{
+            .keysym = Keysym.d,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_launcher_drun } } },
+        },
+        .{
+            .keysym = Keysym.r,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_launcher_run } } },
+        },
+        .{
+            .keysym = Keysym.x,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_system_logout } } },
+        },
+    };
+
+    const tag_num = tags.len;
+    var tag_binddings: [tag_num*4]XkbBinding = undefined;
+    for (0..tag_num) |i| {
+        tag_binddings[i*4] = .{
+            .keysym = Keysym.@"1"+i,
+            .modifiers = Super,
+            .action = .{ .set_output_tag = .{ .tag = 1 << i } },
+        };
+        tag_binddings[i*4+1] = .{
+            .keysym = Keysym.@"1"+i,
+            .modifiers = Super|Shift,
+            .action = .{ .set_window_tag = .{ .tag = 1 << i } },
+        };
+        tag_binddings[i*4+2] = .{
+            .keysym = Keysym.@"1"+i,
+            .modifiers = Super|Ctrl,
+            .action = .{ .toggle_output_tag = .{ .mask = 1 << i } },
+        };
+        tag_binddings[i*4+3] = .{
+            .keysym = Keysym.@"1"+i,
+            .modifiers = Super|Ctrl|Shift,
+            .action = .{ .toggle_window_tag = .{ .mask = 1 << i } },
+        };
+    }
+
+    break :blk bindings ++ tag_binddings;
+};
+
+pub const pointer_bindings = [_]PointerBinding {
+    .{
+        .button = Button.left,
+        .modifiers = Super,
+        .action = .pointer_move,
+    },
+    .{
+        .button = Button.right,
+        .modifiers = Super,
+        .action = .pointer_resize,
+    },
+};
+
+
+fn empty_appid_or_title(_: *const Rule, app_id: ?[]const u8, title: ?[]const u8) bool {
+    return app_id == null or app_id.?.len == 0 or title == null or title.?.len == 0;
+}
+pub const rules = [_]Rule {
+    //  support regex by: https://github.com/mnemnion/mvzr
+    // .{
+    //     // match part
+    //     .app_id = .{ .str = "pattern" } or .app_id = .compile("regex pattern"),
+    //     .title = .{ .str = "pattern" } or .title = .compile("regex pattern"),
+    //
+    //     // apply part
+    //     .tag = 1,
+    //     .floating = true,
+    //     .decoration = .csd or .ssd
+    //     .is_terminal = true,
+    //     .disable_swallow = true,
+    //     .scroller_mfact = 0.5
+    // },
+    .{ .alter_match_fn = &empty_appid_or_title, .floating = true },
+    .{ .app_id = .{ .str = "zenity" }, .floating = true },
+    .{ .app_id = .{ .str = "DesktopEditors" }, .floating = true },
+    .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
+    .{ .app_id = .{ .str = "chromium" }, .tag = 1 << 1, .scroller_mfact = 0.9 },
+    .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.8 },
+};
