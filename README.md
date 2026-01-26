@@ -11,10 +11,17 @@
 
 ## Subject
 
+* [Notice](#notice)
 * [River](#river)
 * [Usage](#usage)
 * [Link](#link)
 
+
+
+
+## Notice
+
+> This project is designed for the Arch Linux environment.
 
 
 
