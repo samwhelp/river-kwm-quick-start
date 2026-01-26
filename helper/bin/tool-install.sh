@@ -56,9 +56,9 @@ mod_tool_install () {
 sys_tool_install () {
 
 	echo
-	echo sudo pacman -Sy --needed xwayland-satellite swaybg thunar xfce4-terminal rofi
+	echo sudo pacman -Sy --needed xwayland-satellite swaybg polkit-gnome thunar xfce4-terminal rofi
 	echo
-	sudo pacman -Sy --needed xwayland-satellite swaybg thunar xfce4-terminal rofi
+	sudo pacman -Sy --needed xwayland-satellite swaybg polkit-gnome thunar xfce4-terminal rofi
 
 }
 
