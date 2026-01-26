@@ -63,6 +63,8 @@ Example:
 
 	$ make river-source-download
 	$ make river-build-essential
+	$ make river-build-and-install
+	$ make river-config-install
 
 
 	$ make kwm-source-download
