@@ -13,3 +13,8 @@ river-build-essential:
 river-build-and-install:
 	@river-build-and-install.sh
 .PHONY: river-build-and-install
+
+
+river-config-install:
+	@river-config-install.sh
+.PHONY: river-config-install
