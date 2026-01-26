@@ -44,43 +44,37 @@ REF_INIT_DIR_PATH="$(realpath "${REF_BASE_DIR_PATH}/../ext")"
 
 
 ################################################################################
-### Head: Portal / portal_help
+### Head: Model / mod_clean
 ##
 
-portal_help () {
+mod_clean () {
 
-cat << __EOF__
+	#echo mod_clean
 
-Usage:
-
-	$ make [action]
-
-Example:
-
-	$ make
-	$ make help
-
-
-	$ make river-source-downloa
-	$ make river-build-essential
-
-
-	$ make kwm-source-download
-	$ make kwm-build-essential
-
-
-	$ make clean
-
-
-Debug:
-	$ export IS_DEBUG=true
-
-__EOF__
+	echo
+	echo sudo rm -rf "${REF_BUILD_DIR_PATH}"
+	echo
+	sudo rm -rf "${REF_BUILD_DIR_PATH}"
 
 }
 
 ##
-### Tail: Portal / portal_help
+### Tail: Model / mod_clean
+################################################################################
+
+
+################################################################################
+### Head: Portal / portal_clean
+##
+
+portal_clean () {
+
+	mod_clean
+
+}
+
+##
+### Tail: Portal / portal_clean
 ################################################################################
 
 
@@ -90,7 +84,7 @@ __EOF__
 
 __main__ () {
 
-	portal_help "${@}"
+	portal_clean "${@}"
 
 }
 
