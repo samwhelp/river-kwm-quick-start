@@ -100,7 +100,14 @@ const KeyboardConfig = struct {
 // Configure part
 ////////////////////////////////////////////////////////
 
-const cmd_terminal = "foot";
+const cmd_terminal = "xfce4-terminal";
+const cmd_file_manager = "thunar";
+const cmd_text_editor = "mousepad";
+const cmd_web_browser = "firefox --new-tab about:blank";
+const cmd_launcher_drun = "rofi -show drun";
+const cmd_launcher_run = "rofi -show run";
+const cmd_launcher_window = "rofi -show window";
+const cmd_system_logout = "pkill river";
 
 pub const env = [_] struct { []const u8, []const u8 } {
     // .{ "key", "value" },
@@ -643,9 +650,39 @@ pub const xkb_bindings = blk: {
             .action = .{ .spawn_shell = .{ .cmd = "wmenu-run" } },
         },
         .{
-            .keysym = Keysym.Return,
-            .modifiers = Super|Shift,
+            .keysym = Keysym.a,
+            .modifiers = Alt|Shift,
             .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal } } },
+        },
+        .{
+            .keysym = Keysym.f,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_file_manager } } },
+        },
+        .{
+            .keysym = Keysym.e,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_text_editor } } },
+        },
+        .{
+            .keysym = Keysym.b,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_web_browser } } },
+        },
+        .{
+            .keysym = Keysym.d,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_launcher_drun } } },
+        },
+        .{
+            .keysym = Keysym.r,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_launcher_run } } },
+        },
+        .{
+            .keysym = Keysym.x,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_system_logout } } },
         },
     };
 
