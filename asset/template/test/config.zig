@@ -440,13 +440,13 @@ pub const xkb_bindings = blk: {
 
         // Mode: default
         .{
-            .keysym = Keysym.q,
+            .keysym = Keysym.c,
             .modifiers = Super|Shift,
             .action = .quit,
         },
         .{
-            .keysym = Keysym.c,
-            .modifiers = Super|Shift,
+            .keysym = Keysym.q,
+            .modifiers = Super,
             .action = .close,
         },
         .{
