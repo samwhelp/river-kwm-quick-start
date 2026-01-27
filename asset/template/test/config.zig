@@ -510,12 +510,12 @@ pub const xkb_bindings = blk: {
             .action = .{ .custom_fn = .{ .func = &modify_gap, .arg = .{ .i = -1 } } },
         },
         .{
-            .keysym = Keysym.j,
+            .keysym = Keysym.s,
             .modifiers = Super,
             .action = .{ .focus_iter = .{ .direction = .forward } },
         },
         .{
-            .keysym = Keysym.k,
+            .keysym = Keysym.a,
             .modifiers = Super,
             .action = .{ .focus_iter = .{ .direction = .reverse } },
         },
@@ -530,13 +530,13 @@ pub const xkb_bindings = blk: {
             .action = .{ .focus_iter = .{ .direction = .reverse, .skip_floating = true } },
         },
         .{
-            .keysym = Keysym.j,
-            .modifiers = Super|Shift,
+            .keysym = Keysym.Tab,
+            .modifiers = Super,
             .action = .{ .swap = .{ .direction = .forward } },
         },
         .{
-            .keysym = Keysym.k,
-            .modifiers = Super|Shift,
+            .keysym = Keysym.grave,
+            .modifiers = Super,
             .action = .{ .swap = .{ .direction = .reverse } },
         },
         .{
@@ -570,7 +570,7 @@ pub const xkb_bindings = blk: {
             .action = .{ .toggle_fullscreen = .{} },
         },
         .{
-            .keysym = Keysym.space,
+            .keysym = Keysym.Escape,
             .modifiers = Super,
             .action = .toggle_floating,
         },
