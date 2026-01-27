@@ -44,55 +44,66 @@ REF_INIT_DIR_PATH="$(realpath "${REF_BASE_DIR_PATH}/../ext")"
 
 
 ################################################################################
-### Head: Portal / portal_help
+### Head: Model / mod_wallpaper_config_install
 ##
 
-portal_help () {
+mod_wallpaper_config_install () {
 
-cat << __EOF__
+	sys_wallpaper_config_install
 
-Usage:
+}
 
-	$ make [action]
-
-Example:
-
-	$ make
-	$ make help
+sys_wallpaper_config_install () {
 
 
-	$ make river-source-download
-	$ make river-build-essential
-	$ make river-build-and-install
-	$ make river-config-install
+	local src_dir_path="${REF_ASSET_DIR_PATH}/config/wallpaper-config/overlay/usr/share/backgrounds"
+	local des_dir_path="/usr/share/backgrounds"
 
 
-	$ make kwm-source-download
-	$ make kwm-build-essential
-	$ make kwm-build-and-install-default
-	$ make kwm-build-and-install-main
+	echo
+	echo mkdir -p "${src_dir_path}"
+	echo
+	mkdir -p "${src_dir_path}"
 
 
-	$ make tool-package-install
-	$ make tool-config-install
+	echo
+	echo sudo mkdir -p "${des_dir_path}"
+	echo
+	sudo mkdir -p "${des_dir_path}"
 
 
-	$ make wallpaper-package-install
-	$ make wallpaper-config-install
+	#echo
+	#echo sudo cp -rfT "${src_dir_path}" "${des_dir_path}"
+	#echo
+	#sudo cp -rfT "${src_dir_path}" "${des_dir_path}"
 
 
-	$ make clean
+	echo
+	echo sudo cp -rfTv "${src_dir_path}" "${des_dir_path}"
+	echo
+	sudo cp -rfTv "${src_dir_path}" "${des_dir_path}"
+
+}
 
 
-Debug:
-	$ export IS_DEBUG=true
 
-__EOF__
+##
+### Tail: Model / mod_wallpaper_config_install
+################################################################################
+
+
+################################################################################
+### Head: Portal / portal_wallpaper_config_install
+##
+
+portal_wallpaper_config_install () {
+
+	mod_wallpaper_config_install
 
 }
 
 ##
-### Tail: Portal / portal_help
+### Tail: Portal / portal_wallpaper_config_install
 ################################################################################
 
 
@@ -102,7 +113,7 @@ __EOF__
 
 __main__ () {
 
-	portal_help "${@}"
+	portal_wallpaper_config_install "${@}"
 
 }
 

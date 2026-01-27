@@ -44,55 +44,41 @@ REF_INIT_DIR_PATH="$(realpath "${REF_BASE_DIR_PATH}/../ext")"
 
 
 ################################################################################
-### Head: Portal / portal_help
+### Head: Model / mod_wallpaper_package_install
 ##
 
-portal_help () {
+mod_wallpaper_package_install () {
 
-cat << __EOF__
+	sys_wallpaper_package_install
 
-Usage:
+}
 
-	$ make [action]
+sys_wallpaper_package_install () {
 
-Example:
-
-	$ make
-	$ make help
-
-
-	$ make river-source-download
-	$ make river-build-essential
-	$ make river-build-and-install
-	$ make river-config-install
-
-
-	$ make kwm-source-download
-	$ make kwm-build-essential
-	$ make kwm-build-and-install-default
-	$ make kwm-build-and-install-main
-
-
-	$ make tool-package-install
-	$ make tool-config-install
-
-
-	$ make wallpaper-package-install
-	$ make wallpaper-config-install
-
-
-	$ make clean
-
-
-Debug:
-	$ export IS_DEBUG=true
-
-__EOF__
+	echo
+	echo sudo pacman -Sy --needed mate-backgrounds
+	echo
+	sudo pacman -Sy --needed mate-backgrounds
 
 }
 
 ##
-### Tail: Portal / portal_help
+### Tail: Model / mod_wallpaper_package_install
+################################################################################
+
+
+################################################################################
+### Head: Portal / portal_wallpaper_package_install
+##
+
+portal_wallpaper_package_install () {
+
+	mod_wallpaper_package_install
+
+}
+
+##
+### Tail: Portal / portal_wallpaper_package_install
 ################################################################################
 
 
@@ -102,7 +88,7 @@ __EOF__
 
 __main__ () {
 
-	portal_help "${@}"
+	portal_wallpaper_package_install "${@}"
 
 }
 

@@ -100,6 +100,10 @@ Example:
 	$ make tool-config-install
 
 
+	$ make wallpaper-package-install
+	$ make wallpaper-config-install
+
+
 	$ make clean
 
 
