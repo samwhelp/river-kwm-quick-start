@@ -7,7 +7,7 @@
 
 ## Edition
 
-| Edition             | Note                |
-| ------------------- | ------------------- |
-| [default](default)  | for original [kwm](https://github.com/kewuaa/kwm) |
-| [main](main)        | for forked [kwm](https://github.com/samwhelp/river-kwm) |
+| Edition             | Note                | Config              | Keybind             |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| [default](default)  | for original [kwm](https://github.com/kewuaa/kwm) | [config.zig](https://github.com/kewuaa/kwm/blob/master/config.def.zig#L100) | [Keybind](default/keybind.md) |
+| [main](main)        | for forked [kwm](https://github.com/samwhelp/river-kwm) | [config.zig](https://github.com/samwhelp/river-kwm-quick-start/blob/main/asset/template/main/config.zig#L100) | [Keybind](main/keybind.md) |
