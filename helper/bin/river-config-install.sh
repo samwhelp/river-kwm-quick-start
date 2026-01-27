@@ -55,33 +55,35 @@ mod_river_config_install () {
 
 sys_river_config_install () {
 
-	echo
-	echo mkdir -p "${REF_ASSET_OVERLAY_DIR_PATH}/etc/skel"
-	echo
-	mkdir -p "${REF_ASSET_OVERLAY_DIR_PATH}/etc/skel"
+
+	local src_dir_path="${REF_ASSET_OVERLAY_DIR_PATH}/etc/skel"
+	local des_dir_path="${HOME}"
 
 
 	echo
-	echo mkdir -p "${HOME}/.config"
+	echo mkdir -p "${src_dir_path}"
 	echo
-	mkdir -p "${HOME}/.config"
+	mkdir -p "${src_dir_path}"
+
+
+	echo
+	echo mkdir -p "${des_dir_path}"
+	echo
+	mkdir -p "${des_dir_path}"
 
 
 	#echo
-	#echo cp -rfT "${REF_ASSET_OVERLAY_DIR_PATH}/etc/skel" "${HOME}"
+	#echo cp -rfT "${src_dir_path}" "${des_dir_path}"
 	#echo
-	#cp -rfT "${REF_ASSET_OVERLAY_DIR_PATH}/etc/skel" "${HOME}"
+	#cp -rfT "${src_dir_path}" "${des_dir_path}"
 
 
 	echo
-	echo cp -rfTv "${REF_ASSET_OVERLAY_DIR_PATH}/etc/skel" "${HOME}"
+	echo cp -rfTv "${src_dir_path}" "${des_dir_path}"
 	echo
-	cp -rfTv "${REF_ASSET_OVERLAY_DIR_PATH}/etc/skel" "${HOME}"
-
+	cp -rfTv "${src_dir_path}" "${des_dir_path}"
 
 }
-
-
 
 ##
 ### Tail: Model / mod_river_config_install

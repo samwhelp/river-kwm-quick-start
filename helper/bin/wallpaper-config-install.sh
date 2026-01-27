@@ -85,8 +85,6 @@ sys_wallpaper_config_install () {
 
 }
 
-
-
 ##
 ### Tail: Model / mod_wallpaper_config_install
 ################################################################################

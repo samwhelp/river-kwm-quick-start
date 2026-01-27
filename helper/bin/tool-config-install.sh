@@ -85,8 +85,6 @@ sys_tool_config_install () {
 
 }
 
-
-
 ##
 ### Tail: Model / mod_tool_config_install
 ################################################################################
