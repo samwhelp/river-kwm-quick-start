@@ -55,6 +55,31 @@
 
 
 
+### Window Swap
+
+> On Layout `tile`, `grid`, `scroller`
+
+| Keybind          | Action                              |
+| ---------------- | ----------------------------------- |
+| `Super + grave`  | Window Swap Prev                   |
+| `Super + Tab`    | Window Swap Next                   |
+
+> grave means `
+
+
+
+
+### Window Toggle Float
+
+> On Layout `tile`, `grid`, `scroller`, `monocle`
+
+| Keybind          | Action                              |
+| ---------------- | ----------------------------------- |
+| `Super + Escape`  | Window Toggle Float                |
+
+
+
+
 ## Application
 
 | Keybind            | Action             |
