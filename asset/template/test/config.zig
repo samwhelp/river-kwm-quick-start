@@ -340,13 +340,13 @@ pub const xkb_bindings = blk: {
     const bindings = [_]XkbBinding {
         // Mode: passthrough
         .{
-            .keysym = Keysym.Escape,
+            .keysym = Keysym.i,
             .modifiers = Super|Shift,
             .action = .{ .switch_mode = .{ .mode = .passthrough } }
         },
         .{
             .mode = .passthrough,
-            .keysym = Keysym.Escape,
+            .keysym = Keysym.i,
             .modifiers = Super|Shift,
             .action = .{ .switch_mode = .{ .mode = .default } }
         },
@@ -354,14 +354,14 @@ pub const xkb_bindings = blk: {
 
         // Mode: floating
         .{
-            .keysym = Keysym.f,
-            .modifiers = Super|Ctrl,
+            .keysym = Keysym.u,
+            .modifiers = Super|Shift,
             .action = .{ .switch_mode = .{ .mode = .floating } },
         },
         .{
             .mode = .floating,
-            .keysym = Keysym.f,
-            .modifiers = Super|Ctrl,
+            .keysym = Keysym.u,
+            .modifiers = Super|Shift,
             .action = .{ .switch_mode = .{ .mode = .default } },
         },
         .{
