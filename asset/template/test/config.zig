@@ -331,7 +331,7 @@ pub const tags = [_][]const u8 {
 
 pub const xkb_bindings = blk: {
     const bindings = [_]XkbBinding {
-        // passthrough
+        // Mode: passthrough
         .{
             .keysym = Keysym.Escape,
             .modifiers = Super|Shift,
@@ -345,7 +345,7 @@ pub const xkb_bindings = blk: {
         },
 
 
-        // floating
+        // Mode: floating
         .{
             .keysym = Keysym.f,
             .modifiers = Super|Ctrl,
@@ -431,7 +431,7 @@ pub const xkb_bindings = blk: {
         },
 
 
-        // default
+        // Mode: default
         .{
             .keysym = Keysym.q,
             .modifiers = Super|Shift,
