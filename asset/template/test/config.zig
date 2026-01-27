@@ -121,6 +121,7 @@ pub const working_directory: union(enum) {
 
 pub const startup_cmds = [_][]const []const u8 {
     // &[_][]const u8 { "swaybg", "-i", "/path/to/wallpaper" },
+    &[_][]const u8 {"sh", "-c", "swaybg -i /usr/share/backgrounds/default.jpg -m fill" },
 };
 
 pub const xcursor_theme: ?XcursorTheme = null;
