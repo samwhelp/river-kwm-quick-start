@@ -627,7 +627,7 @@ pub const xkb_bindings = blk: {
         },
         .{
             .keysym = Keysym.Tab,
-            .modifiers = Super,
+            .modifiers = Super|Shift,
             .action = .switch_to_previous_tag,
         },
         .{
