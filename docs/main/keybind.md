@@ -38,7 +38,35 @@
 | Keybind      | Action                              |
 | ------------ | ----------------------------------- |
 | `Super + q`  | Window Close                        |
-| `Super + a`  | Focus Prev Window                   |
-| `Super + s`  | Focus Next Window                   |
+| `Super + a`  | Window Focus Prev                   |
+| `Super + s`  | Window Focus Next                   |
 | `Super + f`  | Window Toggle Fullscreen            |
 | `Super + m`  | Window Toggle Fullscreen in window  |
+
+
+
+
+## Application
+
+| Keybind            | Action             |
+| ------------------ | ------------------ |
+| `Alt + Shift + d`  | `rofi -show drun`  |
+| `Alt + Shift + r`  | `rofi -show run`   |
+
+
+| Keybind            | Action                           |
+| ------------------ | -------------------------------- |
+| `Alt + Shift + f`  | `thunar`                         |
+| `Alt + Shift + e`  | `mousepad`                       |
+| `Alt + Shift + b`  | `firefox --new-tab about:blank`  |
+| `Alt + Shift + a`  | `xfce4-terminal`                 |
+
+
+
+
+## System
+
+
+| Keybind            | Action             |
+| ------------------ | ------------------ |
+| `Alt + Shift + x`  | Logout             |
