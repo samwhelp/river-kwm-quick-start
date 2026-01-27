@@ -601,27 +601,27 @@ pub const xkb_bindings = blk: {
         },
         .{
             .keysym = Keysym.f,
-            .modifiers = Super,
+            .modifiers = Super|Alt,
             .action = .{ .switch_layout = .{ .layout = .float } },
         },
         .{
             .keysym = Keysym.t,
-            .modifiers = Super,
+            .modifiers = Super|Alt,
             .action = .{ .switch_layout = .{ .layout = .tile } },
         },
         .{
             .keysym = Keysym.g,
-            .modifiers = Super,
+            .modifiers = Super|Alt,
             .action = .{ .switch_layout = .{ .layout = .grid } },
         },
         .{
             .keysym = Keysym.m,
-            .modifiers = Super,
+            .modifiers = Super|Alt,
             .action = .{ .switch_layout = .{ .layout = .monocle } },
         },
         .{
             .keysym = Keysym.s,
-            .modifiers = Super,
+            .modifiers = Super|Alt,
             .action = .{ .switch_layout = .{ .layout = .scroller } },
         },
         .{
