@@ -100,7 +100,7 @@ const KeyboardConfig = struct {
 // Configure part
 ////////////////////////////////////////////////////////
 
-const term_cmd = "foot";
+const cmd_terminal = "foot";
 
 pub const env = [_] struct { []const u8, []const u8 } {
     // .{ "key", "value" },
@@ -154,7 +154,7 @@ pub const bar: BarConfig = .{
             .left = .zoom,
         }),
         .status = .init(.{
-            .middle = .{ .spawn = .{ .argv = &[_][]const u8 { term_cmd } } }
+            .middle = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal } } }
         })
     }),
 };
@@ -645,7 +645,7 @@ pub const xkb_bindings = blk: {
         .{
             .keysym = Keysym.Return,
             .modifiers = Super|Shift,
-            .action = .{ .spawn = .{ .argv = &[_][]const u8 { term_cmd } } },
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal } } },
         },
     };
 
