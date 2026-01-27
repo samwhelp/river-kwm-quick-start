@@ -5,6 +5,15 @@
 
 
 
+## Config File
+
+| Config File |
+| ----------- |
+| [config.zig](https://github.com/samwhelp/river-kwm-quick-start/blob/main/asset/template/main/config.zig) |
+
+
+
+
 ## Mode
 
 | Keybind              | To Mode and Back Default |
