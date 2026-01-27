@@ -575,8 +575,8 @@ pub const xkb_bindings = blk: {
             .action = .toggle_floating,
         },
         .{
-            .keysym = Keysym.s,
-            .modifiers = Super|Shift,
+            .keysym = Keysym.t,
+            .modifiers = Super,
             .action = .toggle_sticky,
         },
         .{
