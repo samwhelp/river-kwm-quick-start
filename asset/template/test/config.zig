@@ -582,7 +582,7 @@ pub const xkb_bindings = blk: {
         },
         .{
             .keysym = Keysym.a,
-            .modifiers = Super,
+            .modifiers = Super|Ctrl,
             .action = .toggle_swallow,
         },
         .{
