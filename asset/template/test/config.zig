@@ -561,12 +561,12 @@ pub const xkb_bindings = blk: {
         },
         .{
             .keysym = Keysym.m,
-            .modifiers = Super|Shift,
+            .modifiers = Super,
             .action = .{ .toggle_fullscreen = .{ .in_window = true } },
         },
         .{
             .keysym = Keysym.f,
-            .modifiers = Super|Shift,
+            .modifiers = Super,
             .action = .{ .toggle_fullscreen = .{} },
         },
         .{
