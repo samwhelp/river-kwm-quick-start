@@ -73,7 +73,8 @@ Example:
 	$ make kwm-build-and-install-main
 
 
-	$ make tool-install
+	$ make tool-package-install
+	$ make tool-config-install
 
 
 	$ make clean

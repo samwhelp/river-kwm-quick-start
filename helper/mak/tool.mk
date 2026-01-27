@@ -1,8 +1,8 @@
 
 
-tool-install:
-	@tool-install.sh
-.PHONY: tool-install
+tool-package-install:
+	@tool-package-install.sh
+.PHONY: tool-package-install
 
 
 tool-config-install:

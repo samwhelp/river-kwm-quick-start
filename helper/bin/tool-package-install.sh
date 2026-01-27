@@ -44,16 +44,16 @@ REF_INIT_DIR_PATH="$(realpath "${REF_BASE_DIR_PATH}/../ext")"
 
 
 ################################################################################
-### Head: Model / mod_tool_install
+### Head: Model / mod_tool_package_install
 ##
 
-mod_tool_install () {
+mod_tool_package_install () {
 
-	sys_tool_install
+	sys_tool_package_install
 
 }
 
-sys_tool_install () {
+sys_tool_package_install () {
 
 	echo
 	echo sudo pacman -Sy --needed xwayland-satellite swaybg polkit-gnome thunar xfce4-terminal rofi
@@ -63,22 +63,22 @@ sys_tool_install () {
 }
 
 ##
-### Tail: Model / mod_tool_install
+### Tail: Model / mod_tool_package_install
 ################################################################################
 
 
 ################################################################################
-### Head: Portal / portal_tool_install
+### Head: Portal / portal_tool_package_install
 ##
 
-portal_tool_install () {
+portal_tool_package_install () {
 
-	mod_tool_install
+	mod_tool_package_install
 
 }
 
 ##
-### Tail: Portal / portal_tool_install
+### Tail: Portal / portal_tool_package_install
 ################################################################################
 
 
@@ -88,7 +88,7 @@ portal_tool_install () {
 
 __main__ () {
 
-	portal_tool_install "${@}"
+	portal_tool_package_install "${@}"
 
 }
 
