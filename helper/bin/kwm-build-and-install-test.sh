@@ -44,54 +44,78 @@ REF_INIT_DIR_PATH="$(realpath "${REF_BASE_DIR_PATH}/../ext")"
 
 
 ################################################################################
-### Head: Model / mod_kwm_source_download
+### Head: Model / mod_kwm_build_and_install
 ##
 
-mod_kwm_source_download () {
+mod_kwm_build_and_install () {
 
 	mod_master_prepare
 
-	#sys_kwm_source_download_from_kewuaa
-
-	sys_kwm_source_download_from_samwhelp
+	sys_kwm_build_and_install
 
 }
 
-sys_kwm_source_download_from_kewuaa () {
+sys_kwm_build_and_install () {
 
 	echo
-	echo git clone "https://github.com/kewuaa/kwm" "${REF_MASTER_KWM_DIR_PATH}"
+	echo mkdir -p "${REF_MASTER_KWM_DIR_PATH}"
 	echo
-	git clone "https://github.com/kewuaa/kwm" "${REF_MASTER_KWM_DIR_PATH}"
+	mkdir -p "${REF_MASTER_KWM_DIR_PATH}"
+
+
+	sys_kwm_config_install
+
+
+	echo
+	echo cd "${REF_MASTER_KWM_DIR_PATH}"
+	echo
+	cd "${REF_MASTER_KWM_DIR_PATH}"
+
+
+
+
+	echo
+	echo sudo zig build -Doptimize=ReleaseSafe --prefix /usr/local install
+	echo
+	sudo zig build -Doptimize=ReleaseSafe --prefix /usr/local install
+
+
+
+
+	echo
+	echo cd "${OLDPWD}"
+	echo
+	cd "${OLDPWD}"
 
 }
 
-sys_kwm_source_download_from_samwhelp () {
+sys_kwm_config_install () {
 
 	echo
-	echo git clone "https://github.com/samwhelp/river-kwm" "${REF_MASTER_KWM_DIR_PATH}"
+	echo install -Dm644 "${REF_ASSET_TEMPLATE_DIR_PATH}/test/config.zig" "${REF_MASTER_KWM_DIR_PATH}/config.zig"
 	echo
-	git clone "https://github.com/samwhelp/river-kwm" "${REF_MASTER_KWM_DIR_PATH}"
+	install -Dm644 "${REF_ASSET_TEMPLATE_DIR_PATH}/test/config.zig" "${REF_MASTER_KWM_DIR_PATH}/config.zig"
 
 }
+
 
 ##
-### Tail: Model / mod_kwm_source_download
+### Tail: Model / mod_kwm_build_and_install
 ################################################################################
 
 
 ################################################################################
-### Head: Portal / portal_kwm_source_download
+### Head: Portal / portal_kwm_build_and_install
 ##
 
-portal_kwm_source_download () {
+portal_kwm_build_and_install () {
 
-	mod_kwm_source_download
+	mod_kwm_build_and_install
 
 }
 
 ##
-### Tail: Portal / portal_kwm_source_download
+### Tail: Portal / portal_kwm_build_and_install
 ################################################################################
 
 
@@ -101,7 +125,7 @@ portal_kwm_source_download () {
 
 __main__ () {
 
-	portal_kwm_source_download "${@}"
+	portal_kwm_build_and_install "${@}"
 
 }
 

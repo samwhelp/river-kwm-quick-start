@@ -18,3 +18,8 @@ kwm-build-and-install-default:
 kwm-build-and-install-main:
 	@kwm-build-and-install-main.sh
 .PHONY: kwm-build-and-install-main
+
+
+kwm-build-and-install-test:
+	@kwm-build-and-install-test.sh
+.PHONY: kwm-build-and-install-test
