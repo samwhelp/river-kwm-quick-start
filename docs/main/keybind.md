@@ -4,6 +4,14 @@
 
 
 
+## Subject
+
+* [Config File](#config-file)
+* [Mode](#mode)
+* [Default Mode](#default-mode)
+
+
+
 
 ## Config File
 
@@ -26,10 +34,17 @@
 
 ## Default Mode
 
+* [Layout](#layout)
+* [Window](#window)
+* [Application](#application)
+* [System](#system)
+
 
 
 
 ## Layout
+
+> on Default Mode, switch to different layout
 
 | Keybind            | Layout      |
 | ------------------ | ----------- |
@@ -99,7 +114,6 @@
 
 
 ## System
-
 
 | Keybind            | Action             |
 | ------------------ | ------------------ |
