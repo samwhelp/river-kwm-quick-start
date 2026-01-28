@@ -204,6 +204,7 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 | `Super + Shift + h`  | Window Snap Move Left      |
 | `Super + Shift + l`  | Window Snap Move Right     |
 
+
 > See [Window Move and Resize](#window-move-and-resize) to  move or resize window using mouse.
 
 
@@ -219,6 +220,8 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 ## Layout / Float
 
 > `Super + Alt + f` to `Layout / Float`.
+
+* See [Window Move and Resize](#window-move-and-resize)
 
 
 
@@ -269,6 +272,12 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 ## Layout / Scroller
 
 > `Super + Alt + s` to `Layout / Scroller`.
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + h`          | Master Shrink              |
+| `Super + l`          | Master Grow                |
+
 
 * See [Window Focus](#window-focus)
 * See [Window Swap](#window-swap)
