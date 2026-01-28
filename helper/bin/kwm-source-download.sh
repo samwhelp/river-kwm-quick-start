@@ -53,7 +53,9 @@ mod_kwm_source_download () {
 
 	#sys_kwm_source_download_from_kewuaa
 
-	sys_kwm_source_download_from_samwhelp
+	#sys_kwm_source_download_from_samwhelp
+
+	sys_kwm_source_download_from_samwhelp_branch_work
 
 }
 
@@ -72,6 +74,15 @@ sys_kwm_source_download_from_samwhelp () {
 	echo git clone "https://github.com/samwhelp/river-kwm" "${REF_MASTER_KWM_DIR_PATH}"
 	echo
 	git clone "https://github.com/samwhelp/river-kwm" "${REF_MASTER_KWM_DIR_PATH}"
+
+}
+
+sys_kwm_source_download_from_samwhelp_branch_work () {
+
+	echo
+	echo git clone -b work "https://github.com/samwhelp/river-kwm" "${REF_MASTER_KWM_DIR_PATH}"
+	echo
+	git clone -b work "https://github.com/samwhelp/river-kwm" "${REF_MASTER_KWM_DIR_PATH}"
 
 }
 
