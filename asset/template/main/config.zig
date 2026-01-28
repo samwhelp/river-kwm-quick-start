@@ -354,13 +354,19 @@ pub const xkb_bindings = blk: {
         // Mode: passthrough
         .{
             .keysym = Keysym.i,
-            .modifiers = Super|Shift,
+            .modifiers = Super|Ctrl,
             .action = .{ .switch_mode = .{ .mode = .passthrough } }
         },
         .{
             .mode = .passthrough,
             .keysym = Keysym.i,
-            .modifiers = Super|Shift,
+            .modifiers = Super|Ctrl,
+            .action = .{ .switch_mode = .{ .mode = .default } }
+        },
+        .{
+            .mode = .passthrough,
+            .keysym = Keysym.Escape,
+            .modifiers = 0,
             .action = .{ .switch_mode = .{ .mode = .default } }
         },
 
@@ -368,13 +374,19 @@ pub const xkb_bindings = blk: {
         // Mode: floating
         .{
             .keysym = Keysym.u,
-            .modifiers = Super|Shift,
+            .modifiers = Super|Ctrl,
             .action = .{ .switch_mode = .{ .mode = .floating } },
         },
         .{
             .mode = .floating,
             .keysym = Keysym.u,
-            .modifiers = Super|Shift,
+            .modifiers = Super|Ctrl,
+            .action = .{ .switch_mode = .{ .mode = .default } },
+        },
+        .{
+            .mode = .floating,
+            .keysym = Keysym.Escape,
+            .modifiers = 0,
             .action = .{ .switch_mode = .{ .mode = .default } },
         },
         .{
