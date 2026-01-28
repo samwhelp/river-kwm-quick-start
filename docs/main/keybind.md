@@ -142,3 +142,5 @@
 | `Super + Print`      | Screenshoot Window         | `xfce4-screenshooter --window`      |
 | `Ctrl + Print`       | Screenshoot Region         | `xfce4-screenshooter --region`      |
 | `Alt + Print`        | Screenshoot App            | `xfce4-screenshooter`               |
+
+> `xfce4-screenshooter --window` is not supported in Wayland.
