@@ -180,6 +180,8 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 > `xfce4-screenshooter --window` is not supported in Wayland.
 
+> run `sudo pacman -Sy --needed xfce4-screenshooter` to install `xfce4-screenshooter`
+
 
 
 
