@@ -26,8 +26,10 @@
 
 | Keybind              | To Mode and Back Default   |
 | -------------------- | -------------------------- |
-| `Super + Shift + i`  | `passthrough`              |
-| `Super + Shift + u`  | `floating`                 |
+| `Super + Ctrl + i`   | `passthrough`              |
+| `Super + Ctrl + u`   | `floating`                 |
+
+> `Esc` to back Default Mode
 
 
 
