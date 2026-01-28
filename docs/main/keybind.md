@@ -9,6 +9,7 @@
 * [Config File](#config-file)
 * [Mode](#mode)
 * [Default Mode](#default-mode)
+* [Floating Mode](#floating-mode)
 
 
 
@@ -24,12 +25,14 @@
 
 ## Mode
 
+There are three modes: `default`, `floating`, `passthrough`.
+
 | Keybind              | To Mode and Back Default   |
 | -------------------- | -------------------------- |
 | `Super + Ctrl + i`   | `passthrough`              |
 | `Super + Ctrl + u`   | `floating`                 |
 
-> `Esc` to back Default Mode
+> `Esc` to back Default Mode.
 
 
 
@@ -98,6 +101,20 @@
 
 
 
+### Window Move and Resize
+
+> On Layout `float`, or Window on `float`
+
+| Keybind                         | Action                     |
+| ------------------------------- | -------------------------- |
+| `Super + [Mouse Left Drag]`     | Window Move                |
+| `Super + [Mouse Right Drag]`    | Window Resize              |
+
+> See [Floating Mode](#floating-mode) to  move or resize window using keyboard.
+
+
+
+
 ## Application
 
 | Keybind              | Action                     | Command                             |
@@ -142,9 +159,41 @@
 
 | Keybind              | Action                     | Command                             |
 | -------------------- | -------------------------- | ----------------------------------- |
-| `Print`              | Screenshot Fullscreen     | `xfce4-screenshooter --fullscreen`  |
-| `Super + Print`      | Screenshot Window         | `xfce4-screenshooter --window`      |
-| `Ctrl + Print`       | Screenshot Region         | `xfce4-screenshooter --region`      |
-| `Alt + Print`        | Screenshot Alternative    | `xfce4-screenshooter`               |
+| `Print`              | Screenshot Fullscreen      | `xfce4-screenshooter --fullscreen`  |
+| `Super + Print`      | Screenshot Window          | `xfce4-screenshooter --window`      |
+| `Ctrl + Print`       | Screenshot Region          | `xfce4-screenshooter --region`      |
+| `Alt + Print`        | Screenshot Alternative     | `xfce4-screenshooter`               |
 
 > `xfce4-screenshooter --window` is not supported in Wayland.
+
+
+
+
+## Floating Mode
+
+> `Super + Ctrl + u` to `Floating Mode`, `Esc` to back `Default Mode`
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + k`          | Window Move Up             |
+| `Super + j`          | Window Move Down           |
+| `Super + h`          | Window Move Left           |
+| `Super + l`          | Window Move Right          |
+
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + Ctrl + k`   | Window Shrink UpDown       |
+| `Super + Ctrl + j`   | Window Grow UpDown         |
+| `Super + Ctrl + h`   | Window Shrink LeftRight    |
+| `Super + Ctrl + l`   | Window Grow LeftRight      |
+
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + Shift + k`  | Window Snap Move Up        |
+| `Super + Shift + j`  | Window Snap Move Down      |
+| `Super + Shift + h`  | Window Snap Move Left      |
+| `Super + Shift + l`  | Window Snap Move Right     |
+
+> See [Window Move and Resize](#window-move-and-resize) to  move or resize window using mouse.
