@@ -101,13 +101,25 @@ const KeyboardConfig = struct {
 ////////////////////////////////////////////////////////
 
 const cmd_terminal = "xfce4-terminal";
+const cmd_terminal_1 = "xfce4-terminal";
+const cmd_terminal_2 = "foot";
+const cmd_terminal_3 = "kitty";
+const cmd_terminal_4 = "sakura";
 const cmd_file_manager = "thunar";
+const cmd_file_manager_1 = "pcmanfm";
 const cmd_text_editor = "mousepad";
 const cmd_web_browser = "firefox --new-tab about:blank";
+const cmd_volume_control = "pavucontrol";
+const cmd_network_connection = "kitty --class 'nmtui' --title 'Network Settings' nmtui";
 const cmd_launcher_drun = "rofi -show drun";
 const cmd_launcher_run = "rofi -show run";
 const cmd_launcher_window = "rofi -show window";
+const cmd_system_exit = "wlogout";
 const cmd_system_logout = "pkill river";
+const cmd_screenshoot_fullscreen = "xfce4-screenshooter --fullscreen";
+const cmd_screenshoot_window = "xfce4-screenshooter --window";
+const cmd_screenshoot_region = "xfce4-screenshooter --region";
+const cmd_screenshoot_app = "xfce4-screenshooter";
 
 pub const env = [_] struct { []const u8, []const u8 } {
     // .{ "key", "value" },
@@ -651,14 +663,39 @@ pub const xkb_bindings = blk: {
             .action = .{ .spawn_shell = .{ .cmd = "wmenu-run" } },
         },
         .{
+            .keysym = Keysym.Return,
+            .modifiers = Alt,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal } } },
+        },
+        .{
             .keysym = Keysym.a,
             .modifiers = Alt|Shift,
-            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal } } },
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal_1 } } },
+        },
+        .{
+            .keysym = Keysym.a,
+            .modifiers = Alt|Ctrl,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal_2 } } },
+        },
+        .{
+            .keysym = Keysym.t,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal_3 } } },
+        },
+        .{
+            .keysym = Keysym.t,
+            .modifiers = Alt|Ctrl,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_terminal_4 } } },
         },
         .{
             .keysym = Keysym.f,
             .modifiers = Alt|Shift,
             .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_file_manager } } },
+        },
+        .{
+            .keysym = Keysym.g,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { cmd_file_manager_1 } } },
         },
         .{
             .keysym = Keysym.e,
@@ -669,6 +706,16 @@ pub const xkb_bindings = blk: {
             .keysym = Keysym.b,
             .modifiers = Alt|Shift,
             .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_web_browser } } },
+        },
+        .{
+            .keysym = Keysym.v,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_volume_control } } },
+        },
+        .{
+            .keysym = Keysym.n,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_network_connection } } },
         },
         .{
             .keysym = Keysym.d,
@@ -682,8 +729,28 @@ pub const xkb_bindings = blk: {
         },
         .{
             .keysym = Keysym.x,
+            .modifiers = Alt|Shift,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_system_exit } } },
+        },
+        .{
+            .keysym = Keysym.x,
             .modifiers = Alt|Ctrl,
             .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_system_logout } } },
+        },
+        .{
+            .keysym = Keysym.Print,
+            .modifiers = Super,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_window } } },
+        },
+        .{
+            .keysym = Keysym.Print,
+            .modifiers = Ctrl,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_region } } },
+        },
+        .{
+            .keysym = Keysym.Print,
+            .modifiers = Alt,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_app } } },
         },
     };
 
