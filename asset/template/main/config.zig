@@ -739,6 +739,11 @@ pub const xkb_bindings = blk: {
         },
         .{
             .keysym = Keysym.Print,
+            .modifiers = 0,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_fullscreen } } },
+        },
+        .{
+            .keysym = Keysym.Print,
             .modifiers = Super,
             .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_window } } },
         },
