@@ -133,6 +133,15 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 
 | Keybind              | Action                     | Command                             |
 | -------------------- | -------------------------- | ----------------------------------- |
+| `Alt + Enter`        | Terminal                   | `xfce4-terminal`                    |
+| `Alt + Shift + a`    | Terminal                   | `xfce4-terminal`                    |
+| `Alt + Ctrl + a`     | Terminal                   | `foot`                              |
+| `Alt + Shift + t`    | Terminal                   | `sakura`                            |
+| `Alt + Ctrl + t`     | Terminal                   | `kitty`                             |
+
+
+| Keybind              | Action                     | Command                             |
+| -------------------- | -------------------------- | ----------------------------------- |
 | `Alt + Shift + f`    | File Manager               | `thunar`                            |
 | `Alt + Shift + g`    | File Manager               | `pcmanfm`                           |
 | `Alt + Shift + e`    | Text Editor                | `mousepad`                          |
@@ -140,14 +149,6 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 | `Alt + Shift + v`    | Volume Control             | `pavucontrol`                       |
 | `Alt + Shift + n`    | Network Connection         | `kitty --class 'nmtui' --title 'Network Settings' nmtui`  |
 
-
-| Keybind              | Action                     | Command                             |
-| -------------------- | -------------------------- | ----------------------------------- |
-| `Alt + Enter`        | Terminal                   | `xfce4-terminal`                    |
-| `Alt + Shift + a`    | Terminal                   | `xfce4-terminal`                    |
-| `Alt + Ctrl + a`     | Terminal                   | `foot`                              |
-| `Alt + Shift + t`    | Terminal                   | `sakura`                            |
-| `Alt + Ctrl + t`     | Terminal                   | `kitty`                             |
 
 
 
