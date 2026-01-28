@@ -23,3 +23,8 @@ kwm-build-and-install-main:
 kwm-build-and-install-test:
 	@kwm-build-and-install-test.sh
 .PHONY: kwm-build-and-install-test
+
+
+kwm-build-and-install-default-enhance:
+	@kwm-build-and-install-default-enhance.sh
+.PHONY: kwm-build-and-install-default-enhance
