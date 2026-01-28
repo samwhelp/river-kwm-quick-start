@@ -11,6 +11,8 @@
 * [Default Mode](#default-mode)
 * [Floating Mode](#floating-mode)
 * [Passthrough Mode](#passthrough-mode)
+* [Reference](#reference)
+
 
 
 
@@ -44,6 +46,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 * [Application](#application)
 * [System](#system)
 * [Screenshot](#screenshot)
+* [Brightness](#brightness)
 * [Tag](#tag)
 
 
@@ -179,6 +182,20 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 
 
+## Brightness
+
+| Keybind                  | Action                     | Command                             |
+| ------------------------ | -------------------------- | ----------------------------------- |
+| `XF86MonBrightnessDown`  | Brightness Up              | `brightnessctl set +5%`             |
+| `XF86MonBrightnessUp`    | Brightness Down            | `brightnessctl set 5%-`             |
+
+* See [Reference](#reference)
+
+> run `sudo pacman -Sy --needed brightnessctl` to install `brightnessctl`
+
+
+
+
 ## Floating Mode
 
 > On `Default Mode`, press `Super + Ctrl + u` to `Floating Mode`, `Esc` to back `Default Mode`
@@ -288,3 +305,28 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 
 ## Tag
+
+
+
+
+
+## Reference
+
+run
+
+``` sh
+pacman -Ql libxkbcommon | grep '\.h'
+```
+
+show
+
+```
+libxkbcommon /usr/include/xkbcommon/xkbcommon-compat.h
+libxkbcommon /usr/include/xkbcommon/xkbcommon-compose.h
+libxkbcommon /usr/include/xkbcommon/xkbcommon-keysyms.h
+libxkbcommon /usr/include/xkbcommon/xkbcommon-names.h
+libxkbcommon /usr/include/xkbcommon/xkbcommon.h
+libxkbcommon /usr/include/xkbcommon/xkbregistry.h
+```
+
+* See [/usr/include/xkbcommon/xkbcommon-keysyms.h](https://xkbcommon.org/doc/0.2.0/xkbcommon-keysyms_8h_source.html)

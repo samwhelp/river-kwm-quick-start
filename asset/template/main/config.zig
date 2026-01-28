@@ -120,6 +120,8 @@ const cmd_screenshot_fullscreen = "xfce4-screenshooter --fullscreen";
 const cmd_screenshot_window = "xfce4-screenshooter --window";
 const cmd_screenshot_region = "xfce4-screenshooter --region";
 const cmd_screenshot_alternative = "xfce4-screenshooter";
+const cmd_brightness_up = "brightnessctl set +5%";
+const cmd_brightness_down = "brightnessctl set 5%-";
 
 pub const env = [_] struct { []const u8, []const u8 } {
     // .{ "key", "value" },
@@ -768,6 +770,16 @@ pub const xkb_bindings = blk: {
             .keysym = Keysym.Print,
             .modifiers = Alt,
             .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshot_alternative } } },
+        },
+        .{
+            .keysym = Keysym.XF86MonBrightnessUp,
+            .modifiers = 0,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_brightness_down } } },
+        },
+        .{
+            .keysym = Keysym.XF86MonBrightnessDown,
+            .modifiers = 0,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_brightness_up } } },
         },
     };
 
