@@ -44,6 +44,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 * [Application](#application)
 * [System](#system)
 * [Screenshot](#screenshot)
+* [Tag](#tag)
 
 
 
@@ -282,3 +283,8 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 * See [Window Focus](#window-focus)
 * See [Window Swap](#window-swap)
+
+
+
+
+## Tag
