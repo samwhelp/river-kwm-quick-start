@@ -38,6 +38,7 @@
 * [Window](#window)
 * [Application](#application)
 * [System](#system)
+* [Screenshot](#screenshot)
 
 
 
@@ -106,16 +107,38 @@
 | Keybind            | Action                           |
 | ------------------ | -------------------------------- |
 | `Alt + Shift + f`  | `thunar`                         |
+| `Alt + Shift + g`  | `pcmanfm`                        |
 | `Alt + Shift + e`  | `mousepad`                       |
 | `Alt + Shift + b`  | `firefox --new-tab about:blank`  |
-| `Alt + Shift + a`  | `xfce4-terminal`                 |
+| `Alt + Shift + v`  | `pavucontrol`                    |
+| `Alt + Shift + n`  | `kitty --class 'nmtui' --title 'Network Settings' nmtui`  |
 
+
+| Keybind            | Action                           |
+| ------------------ | -------------------------------- |
+| `Alt + Enter`      | `xfce4-terminal`                 |
+| `Alt + Shift + a`  | `xfce4-terminal`                 |
+| `Alt + Ctrl + a`   | `foot`                           |
+| `Alt + Shift + t`  | `sakura`                         |
+| `Alt + Ctrl + t`   | `kitty`                          |
 
 
 
 ## System
 
-| Keybind            | Action             |
-| ------------------ | ------------------ |
-| `Alt + Shift + x`  | Exit               |
-| `Alt + Ctrl + x`   | Logout             |
+| Keybind            | Action                           |
+| ------------------ | -------------------------------- |
+| `Alt + Shift + x`  | Exit (`wlogout`)                 |
+| `Alt + Ctrl + x`   | Logout (`pkill river`)           |
+
+
+
+
+## Screenshot
+
+| Keybind            | Action                           |
+| ------------------ | -------------------------------- |
+| `Print`            | Screenshoot Fullscreen (`xfce4-screenshooter --fullscreen`)  |
+| `Super + Print`    | Screenshoot Window (`xfce4-screenshooter --window`)  |
+| `Ctrl + Print`     | Screenshoot Region (`xfce4-screenshooter --region`)  |
+| `Alt + Print`      | Screenshoot App (`xfce4-screenshooter`)  |
