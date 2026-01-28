@@ -17,7 +17,7 @@
 
 | Config File |
 | ----------- |
-| [config.zig](https://github.com/samwhelp/river-kwm-quick-start/blob/main/asset/template/main/config.zig) |
+| [config.zig](https://github.com/samwhelp/river-kwm-quick-start/blob/main/asset/template/main/config.zig#L332) |
 
 
 
@@ -76,8 +76,8 @@
 
 | Keybind          | Action                              |
 | ---------------- | ----------------------------------- |
-| `Super + grave`  | Window Swap Prev                   |
-| `Super + Tab`    | Window Swap Next                   |
+| `Super + grave`  | Window Swap Prev                    |
+| `Super + Tab`    | Window Swap Next                    |
 
 > grave means `
 
@@ -88,9 +88,9 @@
 
 > On Layout `tile`, `grid`, `scroller`, `monocle`
 
-| Keybind          | Action                              |
-| ---------------- | ----------------------------------- |
-| `Super + Escape`  | Window Toggle Float                |
+| Keybind           | Action                              |
+| ----------------- | ----------------------------------- |
+| `Super + Escape`  | Window Toggle Float                 |
 
 
 
