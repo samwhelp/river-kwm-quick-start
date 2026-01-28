@@ -68,7 +68,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 | Keybind              | Action                              |
 | -------------------- | ----------------------------------- |
-| `Super + c`          | Window Close                        |
+| `Super + Shift + c`  | Window Close                        |
 | `Super + Shift + f`  | Window Toggle Fullscreen            |
 | `Super + Shift + m`  | Window Toggle Fullscreen in window  |
 
