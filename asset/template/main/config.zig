@@ -122,6 +122,10 @@ const cmd_screenshot_region = "xfce4-screenshooter --region";
 const cmd_screenshot_alternative = "xfce4-screenshooter";
 const cmd_brightness_up = "brightnessctl set +5%";
 const cmd_brightness_down = "brightnessctl set 5%-";
+const cmd_volume_mute = "pamixer --toggle-mute";
+const cmd_volume_up = "pamixer -i 5";
+const cmd_volume_down = "pamixer -d 5";
+
 
 pub const env = [_] struct { []const u8, []const u8 } {
     // .{ "key", "value" },
@@ -781,7 +785,23 @@ pub const xkb_bindings = blk: {
             .modifiers = 0,
             .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_brightness_up } } },
         },
+        .{
+            .keysym = Keysym.XF86AudioMute,
+            .modifiers = 0,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_volume_mute } } },
+        },
+        .{
+            .keysym = Keysym.XF86AudioRaiseVolume,
+            .modifiers = 0,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_volume_up } } },
+        },
+        .{
+            .keysym = Keysym.XF86AudioLowerVolume,
+            .modifiers = 0,
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_volume_down } } },
+        },
     };
+
 
     const tag_num = tags.len;
     var tag_binddings: [tag_num*4]XkbBinding = undefined;

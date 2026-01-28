@@ -47,6 +47,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 * [System](#system)
 * [Screenshot](#screenshot)
 * [Brightness](#brightness)
+* [Volume](#volume)
 * [Tag](#tag)
 
 
@@ -192,6 +193,21 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 * See [Reference](#reference)
 
 > run `sudo pacman -Sy --needed brightnessctl` to install `brightnessctl`
+
+
+
+
+## Volume
+
+| Keybind                   | Action                     | Command                             |
+| ------------------------- | -------------------------- | ----------------------------------- |
+| `XF86AudioMute`           | Volume Mute                | `pamixer --toggle-mute`             |
+| `XF86AudioRaiseVolume`    | Volume Up                  | `pamixer -i 5`                      |
+| `XF86AudioLowerVolume`    | Volume Down                | `pamixer -d 5`                      |
+
+* See [Reference](#reference)
+
+> run `sudo pacman -Sy --needed pamixer` to install `pamixer`
 
 
 
