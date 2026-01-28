@@ -52,13 +52,13 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 
 > on Default Mode, switch to different layout
 
-| Keybind              | Layout                     |
-| -------------------- | -------------------------- |
-| `Super + Alt + f`    | `float`                    |
-| `Super + Alt + t`    | `tile`                     |
-| `Super + Alt + g`    | `grid`                     |
-| `Super + Alt + m`    | `monocle`                  |
-| `Super + Alt + s`    | `scroller`                 |
+| Keybind              | Layout                         |
+| -------------------- | ------------------------------ |
+| `Super + Alt + f`    | [float](#layout--float)        |
+| `Super + Alt + t`    | [tile](#layout--tile)          |
+| `Super + Alt + g`    | [grid](#layout--grid)          |
+| `Super + Alt + m`    | [monocle](#layout--monocle)    |
+| `Super + Alt + s`    | [scroller](#layout--scroller)  |
 
 
 
@@ -68,10 +68,18 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 | Keybind              | Action                              |
 | -------------------- | ----------------------------------- |
 | `Super + q`          | Window Close                        |
-| `Super + a`          | Window Focus Prev                   |
-| `Super + s`          | Window Focus Next                   |
 | `Super + f`          | Window Toggle Fullscreen            |
 | `Super + m`          | Window Toggle Fullscreen in window  |
+
+
+
+
+### Window Focus
+
+| Keybind              | Action                              |
+| -------------------- | ----------------------------------- |
+| `Super + a`          | Window Focus Prev                   |
+| `Super + s`          | Window Focus Next                   |
 
 
 
@@ -208,9 +216,16 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 
 
 
+## Layout / Float
+
+> `Super + Alt + f` to `Layout / Float`.
+
+
+
+
 ## Layout / Tile
 
-> `Super + Alt + t` to `Layout / Tile`,
+> `Super + Alt + t` to `Layout / Tile`.
 
 | Keybind              | Action                     |
 | -------------------- | -------------------------- |
@@ -224,3 +239,36 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 | -------------------- | -------------------------- |
 | `Super + h`          | Master Shrink              |
 | `Super + l`          | Master Grow                |
+
+
+* See [Window Focus](#window-focus)
+* See [Window Swap](#window-swap)
+
+
+
+
+## Layout / Grid
+
+> `Super + Alt + g` to `Layout / Grid`.
+
+* See [Window Focus](#window-focus)
+* See [Window Swap](#window-swap)
+
+
+
+
+## Layout / Monocle
+
+> `Super + Alt + m` to `Layout / Monocle`.
+
+* See [Window Focus](#window-focus)
+
+
+
+
+## Layout / Scroller
+
+> `Super + Alt + s` to `Layout / Scroller`.
+
+* See [Window Focus](#window-focus)
+* See [Window Swap](#window-swap)
