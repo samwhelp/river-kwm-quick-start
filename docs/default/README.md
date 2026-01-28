@@ -7,6 +7,6 @@
 
 ## Subject
 
-| Subject             |
-| ------------------- |
+| Subject                |
+| ---------------------- |
 | [keybind](keybind.md)  |

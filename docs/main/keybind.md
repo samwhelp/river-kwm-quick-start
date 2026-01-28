@@ -131,6 +131,8 @@
 | `Alt + Shift + x`    | Exit                       | `wlogout`                           |
 | `Alt + Ctrl + x`     | Logout                     | `pkill river`                       |
 
+> run `yay -Sy --needed wlogout` to install `wlogout`
+
 
 
 
