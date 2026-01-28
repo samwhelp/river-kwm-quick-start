@@ -180,7 +180,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 ## Floating Mode
 
-> `Super + Ctrl + u` to `Floating Mode`, `Esc` to back `Default Mode`
+> On `Default Mode`, press `Super + Ctrl + u` to `Floating Mode`, `Esc` to back `Default Mode`
 
 | Keybind              | Action                     |
 | -------------------- | -------------------------- |
@@ -213,14 +213,14 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 ## Passthrough Mode
 
-> `Super + Ctrl + i` to `Passthrough Mode`, `Esc` to back `Default Mode`
+> On `Default Mode`, press `Super + Ctrl + i` to `Passthrough Mode`, `Esc` to back `Default Mode`
 
 
 
 
 ## Layout / Float
 
-> `Super + Alt + f` to `Layout / Float`.
+> On `Default Mode`, press `Super + Alt + f` to `Layout / Float`.
 
 * See [Window Move and Resize](#window-move-and-resize)
 
@@ -229,7 +229,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 ## Layout / Tile
 
-> `Super + Alt + t` to `Layout / Tile`.
+> On `Default Mode`, press `Super + Alt + t` to `Layout / Tile`.
 
 | Keybind              | Action                     |
 | -------------------- | -------------------------- |
@@ -253,7 +253,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 ## Layout / Grid
 
-> `Super + Alt + g` to `Layout / Grid`.
+> On `Default Mode`, press `Super + Alt + g` to `Layout / Grid`.
 
 * See [Window Focus](#window-focus)
 * See [Window Swap](#window-swap)
@@ -263,7 +263,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 ## Layout / Monocle
 
-> `Super + Alt + m` to `Layout / Monocle`.
+> On `Default Mode`, press `Super + Alt + m` to `Layout / Monocle`.
 
 * See [Window Focus](#window-focus)
 
@@ -272,7 +272,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 
 ## Layout / Scroller
 
-> `Super + Alt + s` to `Layout / Scroller`.
+> On `Default Mode`, press `Super + Alt + s` to `Layout / Scroller`.
 
 | Keybind              | Action                     |
 | -------------------- | -------------------------- |
