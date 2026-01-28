@@ -25,7 +25,7 @@
 
 ## Mode
 
-There are three modes: [default](#default-mode), [floating](floating-mode), [passthrough](#passthrough-mode).
+There are three modes: [default](#default-mode), [floating](#floating-mode), [passthrough](#passthrough-mode).
 
 | Keybind              | To Mode or Back Default    |
 | -------------------- | -------------------------- |
