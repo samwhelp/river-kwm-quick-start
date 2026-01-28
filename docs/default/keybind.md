@@ -9,7 +9,8 @@
 * [Config File](#config-file)
 * [Mode](#mode)
 * [Default Mode](#default-mode)
-
+* [Floating Mode](#floating-mode)
+* [Passthrough Mode](#passthrough-mode)
 
 
 
@@ -24,10 +25,14 @@
 
 ## Mode
 
-| Keybind                   | To Mode and Back Default |
-| ------------------------- | ------------------------ |
-| `Super + Shift + Escape`  | `passthrough`            |
-| `Super + Ctrl + f`        | `floating`               |
+There are three modes: [default](#default-mode), [floating](#floating-mode), [passthrough](#passthrough-mode).
+
+| Keybind                 | To Mode or Back Default    |
+| ----------------------- | -------------------------- |
+| `Super + Shift + Esc`   | `passthrough`              |
+| `Super + Ctrl + f`      | `floating`                 |
+
+> `Esc` to back Default Mode.
 
 
 
@@ -37,6 +42,9 @@
 * [Layout](#layout)
 * [Window](#window)
 * [Application](#application)
+* [System](#system)
+* [Screenshot](#screenshot)
+* [Tag](#tag)
 
 
 
@@ -45,13 +53,13 @@
 
 > on Default Mode, switch to different layout
 
-| Keybind            | Layout      |
-| ------------------ | ----------- |
-| `Super + f`        | `float`     |
-| `Super + t`        | `tile`      |
-| `Super + g`        | `grid`      |
-| `Super + m`        | `monocle`   |
-| `Super + s`        | `scroller`  |
+| Keybind              | Layout                         |
+| -------------------- | ------------------------------ |
+| `Super + f`          | [float](#layout--float)        |
+| `Super + t`          | [tile](#layout--tile)          |
+| `Super + g`          | [grid](#layout--grid)          |
+| `Super + m`          | [monocle](#layout--monocle)    |
+| `Super + s`          | [scroller](#layout--scroller)  |
 
 
 
@@ -61,10 +69,18 @@
 | Keybind              | Action                              |
 | -------------------- | ----------------------------------- |
 | `Super + c`          | Window Close                        |
-| `Super + k`          | Window Focus Prev                   |
-| `Super + j`          | Window Focus Next                   |
 | `Super + Shift + f`  | Window Toggle Fullscreen            |
 | `Super + Shift + m`  | Window Toggle Fullscreen in window  |
+
+
+
+
+### Window Focus
+
+| Keybind              | Action                              |
+| -------------------- | ----------------------------------- |
+| `Super + k`          | Window Focus Prev                   |
+| `Super + j`          | Window Focus Next                   |
 
 
 
@@ -73,10 +89,10 @@
 
 > On Layout `tile`, `grid`, `scroller`
 
-| Keybind              | Action                              |
-| -------------------- | ----------------------------------- |
-| `Super + Shift + k`  | Window Swap Prev                    |
-| `Super + Shift + j`  | Window Swap Next                    |
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + Shift + k`  | Window Swap Prev           |
+| `Super + Shift + j`  | Window Swap Next           |
 
 
 
@@ -85,15 +101,157 @@
 
 > On Layout `tile`, `grid`, `scroller`, `monocle`
 
-| Keybind          | Action                              |
-| ---------------- | ----------------------------------- |
-| `Super + space`  | Window Toggle Float                 |
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + space`      | Window Toggle Float        |
+
+
+
+
+### Window Move and Resize
+
+> On Layout `float`, or Window on `float`
+
+| Keybind                         | Action                     |
+| ------------------------------- | -------------------------- |
+| `Super + [Mouse Left Drag]`     | Window Move                |
+| `Super + [Mouse Right Drag]`    | Window Resize              |
+
+* See [Floating Mode](#floating-mode) to  move or resize window **using keyboard**.
 
 
 
 
 ## Application
 
-| Keybind                  | Action                           |
-| ------------------------ | -------------------------------- |
-| `Super + Shift + Enter`  | `foot`                           |
+| Keybind              | Action                     | Command                             |
+| -------------------- | -------------------------- | ----------------------------------- |
+| `Super + p`          | Launcher                   | `wmenu-run`                         |
+
+
+| Keybind                    | Action                     | Command                             |
+| ---------------------      | -------------------------- | ----------------------------------- |
+| `Super + Shift + Enter`    | Terminal                   | `foot`                                    |
+
+
+
+
+## System
+
+
+
+
+## Screenshot
+
+
+
+
+## Floating Mode
+
+> On `Default Mode`, press `Super + Ctrl + f` to `Floating Mode`, `Esc` to back `Default Mode`
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + k`          | Window Move Up             |
+| `Super + j`          | Window Move Down           |
+| `Super + h`          | Window Move Left           |
+| `Super + l`          | Window Move Right          |
+
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + Ctrl + k`   | Window Shrink UpDown       |
+| `Super + Ctrl + j`   | Window Grow UpDown         |
+| `Super + Ctrl + h`   | Window Shrink LeftRight    |
+| `Super + Ctrl + l`   | Window Grow LeftRight      |
+
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + Shift + k`  | Window Snap Move Up        |
+| `Super + Shift + j`  | Window Snap Move Down      |
+| `Super + Shift + h`  | Window Snap Move Left      |
+| `Super + Shift + l`  | Window Snap Move Right     |
+
+
+* See [Window Move and Resize](#window-move-and-resize) to  move or resize window **using mouse**.
+
+
+
+
+## Passthrough Mode
+
+> On `Default Mode`, press `Super + Shift + Esc` to `Passthrough Mode`, `Esc` to back `Default Mode`
+
+
+
+
+## Layout / Float
+
+> On `Default Mode`, press `Super + f` to `Layout / Float`.
+
+* See [Window Move and Resize](#window-move-and-resize)
+
+
+
+
+## Layout / Tile
+
+> On `Default Mode`, press `Super + t` to `Layout / Tile`.
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + Alt + k`    | Set Master Up              |
+| `Super + Alt + j`    | Set Master Down            |
+| `Super + Alt + h`    | Set Master Left            |
+| `Super + Alt + l`    | Set Master Right           |
+
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + h`          | Master Shrink              |
+| `Super + l`          | Master Grow                |
+
+
+* See [Window Focus](#window-focus)
+* See [Window Swap](#window-swap)
+
+
+
+
+## Layout / Grid
+
+> On `Default Mode`, press `Super + g` to `Layout / Grid`.
+
+* See [Window Focus](#window-focus)
+* See [Window Swap](#window-swap)
+
+
+
+
+## Layout / Monocle
+
+> On `Default Mode`, press `Super + m` to `Layout / Monocle`.
+
+* See [Window Focus](#window-focus)
+
+
+
+
+## Layout / Scroller
+
+> On `Default Mode`, press `Super + s` to `Layout / Scroller`.
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + h`          | Master Shrink              |
+| `Super + l`          | Master Grow                |
+
+
+* See [Window Focus](#window-focus)
+* See [Window Swap](#window-swap)
+
+
+
+
+## Tag
