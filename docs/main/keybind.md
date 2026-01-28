@@ -27,7 +27,7 @@
 
 There are three modes: [default](#default-mode), [floating](floating-mode), [passthrough](#passthrough-mode).
 
-| Keybind              | To Mode and Back Default   |
+| Keybind              | To Mode or Back Default    |
 | -------------------- | -------------------------- |
 | `Super + Ctrl + i`   | `passthrough`              |
 | `Super + Ctrl + u`   | `floating`                 |
@@ -204,3 +204,23 @@ There are three modes: [default](#default-mode), [floating](floating-mode), [pas
 ## Passthrough Mode
 
 > `Super + Ctrl + i` to `Passthrough Mode`, `Esc` to back `Default Mode`
+
+
+
+
+## Layout / Tile
+
+> `Super + Alt + t` to `Layout / Tile`,
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + Alt + k`    | Set Master Up              |
+| `Super + Alt + j`    | Set Master Down            |
+| `Super + Alt + h`    | Set Master Left            |
+| `Super + Alt + l`    | Set Master Right           |
+
+
+| Keybind              | Action                     |
+| -------------------- | -------------------------- |
+| `Super + h`          | Master Shrink              |
+| `Super + l`          | Master Grow                |
