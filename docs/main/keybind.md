@@ -117,4 +117,5 @@
 
 | Keybind            | Action             |
 | ------------------ | ------------------ |
-| `Alt + Shift + x`  | Logout             |
+| `Alt + Shift + x`  | Exit               |
+| `Alt + Ctrl + x`   | Logout             |

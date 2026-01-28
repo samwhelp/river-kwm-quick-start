@@ -682,7 +682,7 @@ pub const xkb_bindings = blk: {
         },
         .{
             .keysym = Keysym.x,
-            .modifiers = Alt|Shift,
+            .modifiers = Alt|Ctrl,
             .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_system_logout } } },
         },
     };
