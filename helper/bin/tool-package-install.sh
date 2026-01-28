@@ -56,9 +56,9 @@ mod_tool_package_install () {
 sys_tool_package_install () {
 
 	echo
-	echo sudo pacman -Sy --needed xwayland-satellite swaybg polkit-gnome thunar xfce4-terminal xfce4-screenshooter rofi wmenu kitty foot
+	echo sudo pacman -Sy --needed xwayland-satellite swaybg polkit-gnome thunar xfce4-terminal xfce4-screenshooter rofi wmenu kitty foot brightnessctl pamixer
 	echo
-	sudo pacman -Sy --needed xwayland-satellite swaybg polkit-gnome thunar xfce4-terminal xfce4-screenshooter rofi wmenu kitty foot
+	sudo pacman -Sy --needed xwayland-satellite swaybg polkit-gnome thunar xfce4-terminal xfce4-screenshooter rofi wmenu kitty foot brightnessctl pamixer
 
 }
 
