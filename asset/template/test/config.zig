@@ -116,10 +116,10 @@ const cmd_launcher_run = "rofi -show run";
 const cmd_launcher_window = "rofi -show window";
 const cmd_system_exit = "wlogout";
 const cmd_system_logout = "pkill river";
-const cmd_screenshoot_fullscreen = "xfce4-screenshooter --fullscreen";
-const cmd_screenshoot_window = "xfce4-screenshooter --window";
-const cmd_screenshoot_region = "xfce4-screenshooter --region";
-const cmd_screenshoot_app = "xfce4-screenshooter";
+const cmd_screenshot_fullscreen = "xfce4-screenshooter --fullscreen";
+const cmd_screenshot_window = "xfce4-screenshooter --window";
+const cmd_screenshot_region = "xfce4-screenshooter --region";
+const cmd_screenshot_alternative = "xfce4-screenshooter";
 
 pub const env = [_] struct { []const u8, []const u8 } {
     // .{ "key", "value" },
@@ -740,22 +740,22 @@ pub const xkb_bindings = blk: {
         .{
             .keysym = Keysym.Print,
             .modifiers = 0,
-            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_fullscreen } } },
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshot_fullscreen } } },
         },
         .{
             .keysym = Keysym.Print,
             .modifiers = Super,
-            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_window } } },
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshot_window } } },
         },
         .{
             .keysym = Keysym.Print,
             .modifiers = Ctrl,
-            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_region } } },
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshot_region } } },
         },
         .{
             .keysym = Keysym.Print,
             .modifiers = Alt,
-            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshoot_app } } },
+            .action = .{ .spawn = .{ .argv = &[_][]const u8 { "sh", "-c", cmd_screenshot_alternative } } },
         },
     };
 

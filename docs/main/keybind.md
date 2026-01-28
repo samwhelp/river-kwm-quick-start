@@ -138,9 +138,9 @@
 
 | Keybind              | Action                     | Command                             |
 | -------------------- | -------------------------- | ----------------------------------- |
-| `Print`              | Screenshoot Fullscreen     | `xfce4-screenshooter --fullscreen`  |
-| `Super + Print`      | Screenshoot Window         | `xfce4-screenshooter --window`      |
-| `Ctrl + Print`       | Screenshoot Region         | `xfce4-screenshooter --region`      |
-| `Alt + Print`        | Screenshoot App            | `xfce4-screenshooter`               |
+| `Print`              | Screenshot Fullscreen     | `xfce4-screenshooter --fullscreen`  |
+| `Super + Print`      | Screenshot Window         | `xfce4-screenshooter --window`      |
+| `Ctrl + Print`       | Screenshot Region         | `xfce4-screenshooter --region`      |
+| `Alt + Print`        | Screenshot Alternative    | `xfce4-screenshooter`               |
 
 > `xfce4-screenshooter --window` is not supported in Wayland.
