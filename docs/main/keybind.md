@@ -10,7 +10,7 @@
 * [Mode](#mode)
 * [Default Mode](#default-mode)
 * [Floating Mode](#floating-mode)
-
+* [Passthrough Mode](#passthrough-mode)
 
 
 
@@ -25,7 +25,7 @@
 
 ## Mode
 
-There are three modes: `default`, `floating`, `passthrough`.
+There are three modes: [default](#default-mode), [floating](floating-mode), [passthrough](#passthrough-mode).
 
 | Keybind              | To Mode and Back Default   |
 | -------------------- | -------------------------- |
@@ -197,3 +197,10 @@ There are three modes: `default`, `floating`, `passthrough`.
 | `Super + Shift + l`  | Window Snap Move Right     |
 
 > See [Window Move and Resize](#window-move-and-resize) to  move or resize window using mouse.
+
+
+
+
+## Passthrough Mode
+
+> `Super + Ctrl + i` to `Passthrough Mode`, `Esc` to back `Default Mode`
