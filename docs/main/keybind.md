@@ -118,7 +118,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 | `Super + [Mouse Left Drag]`     | Window Move                |
 | `Super + [Mouse Right Drag]`    | Window Resize              |
 
-* See [Floating Mode](#floating-mode) to  move or resize window using keyboard.
+* See [Floating Mode](#floating-mode) to  move or resize window **using keyboard**.
 
 
 
@@ -206,7 +206,7 @@ There are three modes: [default](#default-mode), [floating](#floating-mode), [pa
 | `Super + Shift + l`  | Window Snap Move Right     |
 
 
-* See [Window Move and Resize](#window-move-and-resize) to  move or resize window using mouse.
+* See [Window Move and Resize](#window-move-and-resize) to  move or resize window **using mouse**.
 
 
 
