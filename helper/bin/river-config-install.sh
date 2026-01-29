@@ -56,7 +56,7 @@ mod_river_config_install () {
 sys_river_config_install () {
 
 
-	local src_dir_path="${REF_ASSET_OVERLAY_DIR_PATH}/etc/skel"
+	local src_dir_path="${REF_ASSET_DIR_PATH}/config/river-config/overlay/etc/skel"
 	local des_dir_path="${HOME}"
 
 
