@@ -19,5 +19,5 @@
 
 | River Config |
 | ------------ |
-| [~/.config/river/init](https://github.com/samwhelp/river-kwm-quick-start/blob/main/asset/overlay/etc/skel/.config/river/init)  |
-| [~/.config/river/autostart](https://github.com/samwhelp/river-kwm-quick-start/blob/main/asset/overlay/etc/skel/.config/river/autostart)  |
+| [~/.config/river/init](https://github.com/samwhelp/river-kwm-quick-start/blob/main/asset/config/river-config/overlay/etc/skel/.config/river/init)  |
+| [~/.config/river/autostart](https://github.com/samwhelp/river-kwm-quick-start/blob/main/asset/config/river-config/overlay/etc/skel/.config/river/autostart)  |
